@@ -25,3 +25,34 @@ CREATE TABLE continentes (
     continente_id INT PRIMARY KEY,
     nro_paises INT NOT NULL
 );
+
+CREATE TABLE paises (
+    pais_id INT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    ejercito INT NOT NULL,
+    poblacion INT NOT NULL,
+    economia INT NOT NULL,
+    conquistado BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+CREATE TABLE arbol_habilidades (
+    arbol_id INT PRIMARY KEY,
+    tipo INT NOT NULL,
+    nro_habilidades INT NOT NULL,
+    progresion INT NOT NULL,
+    ramas INT NOT NULL
+);
+
+CREATE TABLE habilidades (
+    habilidad_id INT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT NOT NULL,
+    bonificacion_economia INT NOT NULL,
+    bonificacion_tropa INT NOT NULL,
+    costo INT NOT NULL
+);
+
+CREATE TABLE ejercitos_jugador (
+    ejercito_id INT PRIMARY KEY,
+    nro_tropas INT NOT NULL
+);
