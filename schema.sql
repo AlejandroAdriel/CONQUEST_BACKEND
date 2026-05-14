@@ -56,3 +56,30 @@ CREATE TABLE ejercitos_jugador (
     ejercito_id INT PRIMARY KEY,
     nro_tropas INT NOT NULL
 );
+
+CREATE TABLE tropas (
+    tropa_id INT PRIMARY KEY,
+    tipo     INT NOT NULL,
+    costo    INT NOT NULL,
+    ataque   INT NOT NULL,
+    defensa  INT NOT NULL
+);
+
+CREATE TABLE infanterias (
+    tropa_id     INT PRIMARY KEY,
+    FOREIGN KEY (tropa_id) REFERENCES tropas(tropa_id)
+    bono_defensa INT NOT NULL,
+);
+
+CREATE TABLE caballerias (
+    tropa_id    INT PRIMARY KEY,
+    FOREIGN KEY (tropa_id) REFERENCES tropas(tropa_id)
+    bono_ataque INT NOT NULL,
+);
+
+CREATE TABLE artillerias (
+    tropa_id     INT PRIMARY KEY,
+    FOREIGN KEY (tropa_id) REFERENCES tropas(tropa_id)
+    bono_ataque  INT NOT NULL,
+    bono_defensa INT NOT NULL,
+);
