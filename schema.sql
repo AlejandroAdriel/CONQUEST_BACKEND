@@ -83,3 +83,28 @@ CREATE TABLE artillerias (
     bono_ataque  INT NOT NULL,
     bono_defensa INT NOT NULL,
 );
+
+CREATE TABLE tiempos (
+  tiempo_id SERIAL PRIMARY KEY, 
+  fecha_partida TIMESTAMP NOT NULL, 
+  velocidad INT NOT NULL DEFAULT 1, 
+  pausado BOOLEAN NOT NULL DEFAULT FALSE 
+)
+; 
+CREATE TABLE eventos (
+  evento_id SERIAL PRIMARY KEY, 
+  descripcion TEXT NOT NULL, 
+  bonificacion INT NOT NULL
+)
+; 
+CREATE TABLE partidas (
+  partida_id SERIAL PRIMARY KEY, 
+  estado BOOLEAN NOT NULL DEFAULT TRUE,
+  fecha TIMESTAMP NOT NULL, 
+  tiempo INT NOT NULL
+); 
+CREATE TABLE eventos_tiempo (
+  evento_id INT , 
+  tiempo_id INT
+
+); 
