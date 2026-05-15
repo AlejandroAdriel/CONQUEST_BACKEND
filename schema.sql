@@ -1,5 +1,5 @@
 CREATE TABLE usuarios (
-    usuario_id INT PRIMARY KEY,
+    usuario_id SERIAL PRIMARY KEY,
     correo VARCHAR(255) NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
     nombre VARCHAR(100) NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE usuarios (
 );
 
 CREATE TABLE jugadores (
-    jugador_id INT PRIMARY KEY,
+    jugador_id SERIAL PRIMARY KEY,
     habilidad INT NOT NULL,
     territorio INT NOT NULL,
     ejercito INT NOT NULL,
@@ -16,18 +16,18 @@ CREATE TABLE jugadores (
 );
 
 CREATE TABLE mapas (
-    mapa_id INT PRIMARY KEY,
+    mapa_id SERIAL PRIMARY KEY,
     nro_continentes INT NOT NULL,
     nro_paises INT NOT NULL
 );
 
 CREATE TABLE continentes (
-    continente_id INT PRIMARY KEY,
+    continente_id SERIAL PRIMARY KEY,
     nro_paises INT NOT NULL
 );
 
 CREATE TABLE paises (
-    pais_id INT PRIMARY KEY,
+    pais_id SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     ejercito INT NOT NULL,
     poblacion INT NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE paises (
 );
 
 CREATE TABLE arbol_habilidades (
-    arbol_id INT PRIMARY KEY,
+    arbol_id SERIAL PRIMARY KEY,
     tipo INT NOT NULL,
     nro_habilidades INT NOT NULL,
     progresion INT NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE arbol_habilidades (
 );
 
 CREATE TABLE habilidades (
-    habilidad_id INT PRIMARY KEY,
+    habilidad_id SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     descripcion TEXT NOT NULL,
     bonificacion_economia INT NOT NULL,
@@ -53,12 +53,12 @@ CREATE TABLE habilidades (
 );
 
 CREATE TABLE ejercitos_jugador (
-    ejercito_id INT PRIMARY KEY,
-    nro_tropas INT NOT NULL
+    ejercito_id SERIAL PRIMARY KEY,
+    nro_tropas INT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE tropas (
-    tropa_id INT PRIMARY KEY,
+    tropa_id SERIAL PRIMARY KEY,
     tipo     INT NOT NULL,
     costo    INT NOT NULL,
     ataque   INT NOT NULL,
@@ -67,19 +67,19 @@ CREATE TABLE tropas (
 
 CREATE TABLE infanterias (
     tropa_id     INT PRIMARY KEY,
-    FOREIGN KEY (tropa_id) REFERENCES tropas(tropa_id)
+    FOREIGN KEY (tropa_id) REFERENCES tropas(tropa_id),
     bono_defensa INT NOT NULL,
 );
 
 CREATE TABLE caballerias (
     tropa_id    INT PRIMARY KEY,
-    FOREIGN KEY (tropa_id) REFERENCES tropas(tropa_id)
+    FOREIGN KEY (tropa_id) REFERENCES tropas(tropa_id),
     bono_ataque INT NOT NULL,
 );
 
 CREATE TABLE artillerias (
     tropa_id     INT PRIMARY KEY,
-    FOREIGN KEY (tropa_id) REFERENCES tropas(tropa_id)
+    FOREIGN KEY (tropa_id) REFERENCES tropas(tropa_id),
     bono_ataque  INT NOT NULL,
     bono_defensa INT NOT NULL,
 );
