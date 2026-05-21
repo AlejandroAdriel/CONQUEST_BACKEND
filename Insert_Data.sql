@@ -49,4 +49,3 @@ INSERT INTO paises (nombre, ejercito, poblacion, economia, conquistado, continen
 ('Canadá', 4000, 38000000, 5, FALSE, 2),    
 ('Francia', 7000, 67000000, 5, TRUE, 3),    
 ('Japón', 6000, 125000000, 5, FALSE, 4);   
-
