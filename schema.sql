@@ -24,6 +24,7 @@ CREATE TABLE mapas (
 CREATE TABLE continentes (
     continente_id SERIAL PRIMARY KEY,
     nro_paises INT NOT NULL
+    FOREIGN KEY (mapa_id) REFERENCES mapas(mapa_id)
 );
 
 CREATE TABLE paises (
@@ -33,6 +34,7 @@ CREATE TABLE paises (
     poblacion INT NOT NULL,
     economia INT NOT NULL,
     conquistado BOOLEAN NOT NULL DEFAULT FALSE
+    FOREIGN KEY (continente_id) REFERENCES continentes(continente_id)
 );
 
 CREATE TABLE arbol_habilidades (
