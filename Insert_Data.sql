@@ -1,3 +1,19 @@
+INSERT INTO usuarios (correo, contrasena, nombre) 
+VALUES 
+('general.kenobi@republica.com', 'contrasenaSegura123', 'Obi-Wan Kenobi'),
+('m.gomez@correo.com', 'admin456', 'María Gómez'),
+('jugador_elite@gaming.net', 'qwerty789', 'Carlos Ruiz'),
+('valeria.silva@correo.com', 'valejuegos45', 'Valeria Silva'),
+('arthur.pendragon@reino.com', 'excalibur123', 'Arturo Pendragon');
+
+INSERT INTO jugadores (usuario_id, habilidad, territorio, ejercito, economia, poblacion) 
+VALUES 
+(1, 10, 5, 1500, 5000, 10000),  -- Vinculado a Obi-Wan Kenobi (ID 1)
+(2, 15, 8, 3000, 8500, 25000),  -- Vinculado a María Gómez (ID 2)
+(3, 5,  2, 500,  1200, 3000),   -- Vinculado a Carlos Ruiz (ID 3)
+(4, 18, 9, 3500, 9000, 28000),  -- Vinculado a Valeria Silva (ID 4)
+(5, 12, 4, 1200, 4500, 9000);   -- Vinculado a Arturo Pendragon (ID 5)
+
 INSERT INTO habilidades (nombre, descripcion, bonificacion_economia, bonificacion_tropa, costo)
 VALUES
     ('Agricultura', 'Mejora la producción de recursos', 10, 0, 100),
@@ -33,3 +49,4 @@ INSERT INTO paises (nombre, ejercito, poblacion, economia, conquistado, continen
 ('Canadá', 4000, 38000000, 5, FALSE, 2),    
 ('Francia', 7000, 67000000, 5, TRUE, 3),    
 ('Japón', 6000, 125000000, 5, FALSE, 4);   
+
