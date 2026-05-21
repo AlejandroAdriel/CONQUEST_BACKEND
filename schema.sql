@@ -39,19 +39,19 @@ CREATE TABLE paises (
 
 CREATE TABLE arbol_habilidades (
     arbol_id SERIAL PRIMARY KEY,
-    tipo INT NOT NULL,
-    nro_habilidades INT NOT NULL,
-    progresion INT NOT NULL,
-    ramas INT NOT NULL
+    --tipo INT NOT NULL,
+    --nro_habilidades INT NOT NULL,
+    --progresion INT NOT NULL,
+    --ramas INT NOT NULL
 );
 
 CREATE TABLE habilidades (
     habilidad_id SERIAL PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    descripcion TEXT NOT NULL,
-    bonificacion_economia INT NOT NULL,
-    bonificacion_tropa INT NOT NULL,
-    costo INT NOT NULL
+    --nombre VARCHAR(100) NOT NULL,
+    --descripcion TEXT NOT NULL,
+    --bonificacion_economia INT NOT NULL,
+    --bonificacion_tropa INT NOT NULL,
+    --costo INT NOT NULL
 );
 
 CREATE TABLE ejercitos_jugador (
