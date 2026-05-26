@@ -68,3 +68,7 @@ INSERT INTO infanterias (tropas_id, bono_defensa) VALUES
 (1,5),
 (2,10),
 (3,7),
+INSERT INTO caballerias (tropas_id, bono_defensa) VALUES
+(2,15),
+(3,20),
+(4,7),
