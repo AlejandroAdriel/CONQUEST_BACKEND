@@ -51,8 +51,8 @@ INSERT INTO paises (nombre, ejercito, poblacion, economia, conquistado, continen
 ('Japón', 6000, 125000000, 5, FALSE, 4);   
 
 INSERT INTO tropas (tipo, costo, ataque, defensa) VALUES 
-(1, 100, 15, 10),  -- Generará ID 1 (Infantería)
-(1, 150, 20, 25),  -- Generará ID 2 (Infantería)
-(2, 250, 35, 15),  -- Generará ID 3 (Caballería)
-(2, 400, 50, 30),  -- Generará ID 4 (Caballería)
-(3, 500, 60, 5);   -- Generará ID 5 (Artillería)
+(1, 100, 15, 10), 
+(1, 150, 20, 25), 
+(2, 250, 35, 15), 
+(2, 400, 50, 30), 
+(3, 500, 60, 5);   
