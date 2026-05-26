@@ -63,3 +63,8 @@ INSERT INTO eventos (descripcion, bonificacion) VALUES
 ('Lluvia intensa: Avance Lento', -4),
 ('Alianza concretada: Liderazgo solido', 6),
 ('Discurso inspirador: Alza de impetu', 5); 
+
+INSERT INTO infanterias (tropas_id, bono_defensa) VALUES
+(1,5),
+(2,10),
+(3,7),
