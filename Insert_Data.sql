@@ -56,3 +56,10 @@ INSERT INTO tropas (tipo, costo, ataque, defensa) VALUES
 (2, 250, 35, 15), 
 (2, 400, 50, 30), 
 (3, 500, 60, 5);   
+
+INSERT INTO eventos (descripcion, bonificacion) VALUES
+('Tormenta de Arena: Caos en tierra firme', -3),
+('Corte repentino de suministros: Hambruna en el campamento', -5),
+('Lluvia intensa: Avance Lento', -4),
+('Alianza concretada: Liderazgo solido', 6),
+('Discurso inspirador: Alza de impetu', 5); 
