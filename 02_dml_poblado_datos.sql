@@ -96,3 +96,10 @@ INSERT INTO tiempos (fecha_partida, velocidad, pausado) VALUES
 ('2026-05-28 18:45:10', 1, TRUE),
 ('2026-05-29 02:15:00', 3, FALSE),
 ('2026-05-29 09:00:00', 1, TRUE);
+
+INSERT INTO partidas (estado, fecha, tiempo) VALUES 
+(TRUE, '2026-05-28 00:00:00', 3600),
+(TRUE, '2026-05-27 15:00:00', 7200),
+(FALSE, '2026-05-25 10:00:00', 18000),
+(TRUE, '2026-05-28 20:00:00', 4500),
+(FALSE, '2026-05-24 08:30:00', 24000);
