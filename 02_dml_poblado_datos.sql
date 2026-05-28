@@ -82,3 +82,10 @@ INSERT INTO artillerias (tropas_id,bono_ataque,  bono_defensa) VALUES
 (4,10, 7),
 (5, 25, 2),
 (6, 40, 5);
+
+INSERT INTO ejercitos_jugador (nro_tropas) VALUES 
+(1500), 
+(3000), 
+(500), 
+(3500), 
+(1200);
