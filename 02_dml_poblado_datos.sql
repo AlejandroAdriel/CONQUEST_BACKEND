@@ -23,7 +23,9 @@ INSERT INTO habilidades (nombre, descripcion, bonificacion_economia, bonificacio
 INSERT INTO arbol_habilidades (tipo, nro_habilidades, progresion, ramas) VALUES
 (1, 5, 1, 2),
 (2, 3, 2, 1),
-(3, 4, 1, 3);
+(3, 4, 1, 3),
+(1, 6, 2, 2), 
+(2, 5, 3, 2);
 
 INSERT INTO mapas (nro_continentes, nro_paises) VALUES 
 (6, 42), 
