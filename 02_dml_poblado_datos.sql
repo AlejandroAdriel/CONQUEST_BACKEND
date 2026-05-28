@@ -89,3 +89,10 @@ INSERT INTO ejercitos_jugador (nro_tropas) VALUES
 (500), 
 (3500), 
 (1200);
+
+INSERT INTO tiempos (fecha_partida, velocidad, pausado) VALUES 
+('2026-05-28 00:00:00', 1, FALSE),
+('2026-05-28 12:30:00', 2, FALSE),
+('2026-05-28 18:45:10', 1, TRUE),
+('2026-05-29 02:15:00', 3, FALSE),
+('2026-05-29 09:00:00', 1, TRUE);
