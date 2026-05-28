@@ -113,3 +113,7 @@ INSERT INTO eventos_tiempo (evento_id, tiempo_id) VALUES
 UPDATE usuarios 
 SET contrasena = 'NuevaContrasena2026' 
 WHERE usuario_id = 4;
+
+UPDATE jugadores 
+SET habilidad = habilidad + 2
+WHERE jugador_id = 1;
