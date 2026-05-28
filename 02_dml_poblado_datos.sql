@@ -103,3 +103,10 @@ INSERT INTO partidas (estado, fecha, tiempo) VALUES
 (FALSE, '2026-05-25 10:00:00', 18000),
 (TRUE, '2026-05-28 20:00:00', 4500),
 (FALSE, '2026-05-24 08:30:00', 24000);
+
+INSERT INTO eventos_tiempo (evento_id, tiempo_id) VALUES 
+(1, 1), 
+(2, 2), 
+(3, 3), 
+(4, 4), 
+(5, 5);
