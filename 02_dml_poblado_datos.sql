@@ -117,3 +117,7 @@ WHERE usuario_id = 4;
 UPDATE jugadores 
 SET habilidad = habilidad + 2
 WHERE jugador_id = 1;
+
+UPDATE paises 
+SET conquistado = TRUE, ejercito = 0 
+WHERE pais_id = 2;
