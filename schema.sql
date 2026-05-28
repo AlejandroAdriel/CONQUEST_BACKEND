@@ -39,19 +39,19 @@ CREATE TABLE paises (
 
 CREATE TABLE arbol_habilidades (
     arbol_id SERIAL PRIMARY KEY,
-    --tipo INT NOT NULL,
-    --nro_habilidades INT NOT NULL,
-    --progresion INT NOT NULL,
-    --ramas INT NOT NULL
+    tipo INT NOT NULL,
+    nro_habilidades INT NOT NULL,
+    progresion INT NOT NULL,
+    ramas INT NOT NULL
 );
 
 CREATE TABLE habilidades (
     habilidad_id SERIAL PRIMARY KEY,
-    --nombre VARCHAR(100) NOT NULL,
-    --descripcion TEXT NOT NULL,
-    --bonificacion_economia INT NOT NULL,
-    --bonificacion_tropa INT NOT NULL,
-    --costo INT NOT NULL
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT NOT NULL,
+    bonificacion_economia INT NOT NULL,
+    bonificacion_tropa INT NOT NULL,
+    costo INT NOT NULL
 );
 
 CREATE TABLE ejercitos_jugador (
@@ -91,22 +91,22 @@ CREATE TABLE tiempos (
   fecha_partida TIMESTAMP NOT NULL, 
   velocidad INT NOT NULL DEFAULT 1, 
   pausado BOOLEAN NOT NULL DEFAULT FALSE 
-)
-; 
+);
+ 
 CREATE TABLE eventos (
   evento_id SERIAL PRIMARY KEY, 
   descripcion TEXT NOT NULL, 
   bonificacion INT NOT NULL
-)
-; 
+);
+
 CREATE TABLE partidas (
   partida_id SERIAL PRIMARY KEY, 
   estado BOOLEAN NOT NULL DEFAULT TRUE,
   fecha TIMESTAMP NOT NULL, 
   tiempo INT NOT NULL
 ); 
+
 CREATE TABLE eventos_tiempo (
   evento_id INT , 
   tiempo_id INT
-
 ); 

@@ -8,11 +8,11 @@ VALUES
 
 INSERT INTO jugadores (usuario_id, habilidad, territorio, ejercito, economia, poblacion) 
 VALUES 
-(1, 10, 5, 1500, 5000, 10000),  -- Vinculado a Obi-Wan Kenobi (ID 1)
-(2, 15, 8, 3000, 8500, 25000),  -- Vinculado a María Gómez (ID 2)
-(3, 5,  2, 500,  1200, 3000),   -- Vinculado a Carlos Ruiz (ID 3)
-(4, 18, 9, 3500, 9000, 28000),  -- Vinculado a Valeria Silva (ID 4)
-(5, 12, 4, 1200, 4500, 9000);   -- Vinculado a Arturo Pendragon (ID 5)
+(1, 10, 5, 1500, 5000, 10000), 
+(2, 15, 8, 3000, 8500, 25000),  
+(3, 5,  2, 500,  1200, 3000),   
+(4, 18, 9, 3500, 9000, 28000),  
+(5, 12, 4, 1200, 4500, 9000);   
 
 INSERT INTO habilidades (nombre, descripcion, bonificacion_economia, bonificacion_tropa, costo)
 VALUES
