@@ -8,6 +8,8 @@ CREATE TABLE usuarios (
 
 CREATE TABLE jugadores (
     jugador_id SERIAL PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    partida_id INT NOT NULL,
     habilidad INT NOT NULL,
     territorio INT NOT NULL,
     ejercito INT NOT NULL,
@@ -34,7 +36,7 @@ CREATE TABLE paises (
     ejercito INT NOT NULL,
     poblacion INT NOT NULL,
     economia INT NOT NULL,
-    conquistado BOOLEAN NOT NULL DEFAULT FALSE
+    conquistado BOOLEAN NOT NULL DEFAULT FALSE,
     FOREIGN KEY (continente_id) REFERENCES continentes(continente_id)
 );
 
@@ -71,7 +73,7 @@ CREATE TABLE tropas (
 CREATE TABLE infanterias (
     tropa_id     INT PRIMARY KEY,
     FOREIGN KEY (tropa_id) REFERENCES tropas(tropa_id),
-    bono_defensa INT NOT NULL,
+    bono_defensa INT NOT NULL
 );
 
 CREATE TABLE caballerias (
