@@ -23,7 +23,8 @@ CREATE TABLE mapas (
 
 CREATE TABLE continentes (
     continente_id SERIAL PRIMARY KEY,
-    nro_paises INT NOT NULL
+    mapa_id INT NOT NULL,
+    nro_paises INT NOT NULL,
     FOREIGN KEY (mapa_id) REFERENCES mapas(mapa_id)
 );
 
@@ -76,14 +77,14 @@ CREATE TABLE infanterias (
 CREATE TABLE caballerias (
     tropa_id    INT PRIMARY KEY,
     FOREIGN KEY (tropa_id) REFERENCES tropas(tropa_id),
-    bono_ataque INT NOT NULL,
+    bono_ataque INT NOT NULL
 );
 
 CREATE TABLE artillerias (
     tropa_id     INT PRIMARY KEY,
     FOREIGN KEY (tropa_id) REFERENCES tropas(tropa_id),
     bono_ataque  INT NOT NULL,
-    bono_defensa INT NOT NULL,
+    bono_defensa INT NOT NULL
 );
 
 CREATE TABLE tiempos (
