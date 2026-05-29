@@ -6,6 +6,13 @@ CREATE TABLE usuarios (
     creado TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE partidas (
+  partida_id SERIAL PRIMARY KEY, 
+  estado BOOLEAN NOT NULL DEFAULT TRUE,
+  fecha TIMESTAMP NOT NULL, 
+  tiempo INT NOT NULL
+); 
+
 CREATE TABLE jugadores (
     jugador_id SERIAL PRIMARY KEY,
     usuario_id INT NOT NULL,
