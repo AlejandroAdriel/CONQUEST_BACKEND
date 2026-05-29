@@ -5,12 +5,13 @@ INSERT INTO usuarios (correo, contrasena, nombre) VALUES
 ('valeria.silva@correo.com', 'valejuegos45', 'Valeria Silva'),
 ('arthur.pendragon@reino.com', 'excalibur123', 'Arturo Pendragon');
 
-INSERT INTO jugadores (usuario_id, habilidad, territorio, ejercito, economia, poblacion) VALUES 
-(1, 10, 5, 1500, 5000, 10000), 
-(2, 15, 8, 3000, 8500, 25000),  
-(3, 5,  2, 500,  1200, 3000),   
-(4, 18, 9, 3500, 9000, 28000),  
-(5, 12, 4, 1200, 4500, 9000);   
+INSERT INTO jugadores (usuario_id,partida_id,  habilidad, territorio, ejercito, economia, poblacion) VALUES 
+(1, 1, 10,  5, 1500, 5000, 10000), 
+(2, 1, 15,  3, 1200, 4000, 15000), 
+(3, 1, 12,  6, 1300, 3900, 13000), 
+(4, 1, 10,  5, 1500, 5000, 11000), 
+(5, 1, 12,  9, 1500, 6000, 12000), 
+  
 
 INSERT INTO mapas (nro_continentes, nro_paises) VALUES 
 (6, 42), 

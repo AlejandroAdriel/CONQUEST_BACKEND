@@ -1,6 +1,6 @@
 CREATE TABLE usuarios (
     usuario_id SERIAL PRIMARY KEY,
-    correo VARCHAR(255) NOT NULL,
+    correo VARCHAR(255) NOT NULL UNIQUE,
     contrasena VARCHAR(255) NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     creado TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -114,6 +114,6 @@ CREATE TABLE partidas (
 ); 
 
 CREATE TABLE eventos_tiempo (
-  evento_id INT , 
+  evento_id INT, 
   tiempo_id INT
 ); 
