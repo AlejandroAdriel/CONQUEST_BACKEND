@@ -5,7 +5,7 @@ INSERT INTO usuarios (correo, contrasena, nombre) VALUES
 ('valeria.silva@correo.com', 'valejuegos45', 'Valeria Silva'),
 ('arthur.pendragon@reino.com', 'excalibur123', 'Arturo Pendragon');
 
-INSERT INTO jugadores (usuario_id,partida_id,  habilidad, territorio, ejercito, economia, poblacion) VALUES 
+INSERT INTO jugadores (usuario_id, partida_id,  habilidad, territorio, ejercito, economia, poblacion) VALUES 
 (1, 1, 10,  5, 1500, 5000, 10000), 
 (2, 1, 15,  3, 1200, 4000, 15000), 
 (3, 1, 12,  6, 1300, 3900, 13000), 
@@ -41,12 +41,12 @@ INSERT INTO arbol_habilidades (tipo, nro_habilidades, progresion, ramas) VALUES
 (1, 6, 2, 2), 
 (2, 5, 3, 2);
 
-INSERT INTO habilidades (nombre, descripcion, bonificacion_economia, bonificacion_tropa, costo) VALUES
-('Agricultura', 'Mejora la producción de recursos', 10, 0, 100),
-('Infantería', 'Aumenta la fuerza de las tropas de infantería', 0, 15, 200),
-('Comercio', 'Reduce costos en rutas comerciales', 15, 5, 150),
-('Ingeniería', 'Mejora defensas y construcciones', 5, 10, 250),
-('Diplomacia', 'Mejora relaciones y alianzas', 20, 0, 120);
+INSERT INTO habilidades (arbol_id, nombre, descripcion, bonificacion_economia, bonificacion_tropa, costo) VALUES
+(1,'Agricultura', 'Mejora la producción de recursos', 10, 0, 100),
+(1,'Infantería', 'Aumenta la fuerza de las tropas de infantería', 0, 15, 200),
+(1,'Comercio', 'Reduce costos en rutas comerciales', 15, 5, 150),
+(1,'Ingeniería', 'Mejora defensas y construcciones', 5, 10, 250),
+(1,'Diplomacia', 'Mejora relaciones y alianzas', 20, 0, 120);
 
 INSERT INTO ejercitos_jugador (nro_tropas) VALUES 
 (1500), 
