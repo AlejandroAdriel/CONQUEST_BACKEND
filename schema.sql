@@ -43,6 +43,7 @@ CREATE TABLE paises (
     pais_id SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     ejercito INT NOT NULL,
+    continente_id INT NOT NULL,
     poblacion INT NOT NULL,
     economia INT NOT NULL,
     conquistado BOOLEAN NOT NULL DEFAULT FALSE,
@@ -123,4 +124,5 @@ CREATE TABLE partidas (
 CREATE TABLE eventos_tiempo (
   evento_id INT, 
   tiempo_id INT
+  
 ); 
