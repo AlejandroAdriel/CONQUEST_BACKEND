@@ -10,11 +10,13 @@ CREATE TABLE jugadores (
     jugador_id SERIAL PRIMARY KEY,
     usuario_id INT NOT NULL,
     partida_id INT NOT NULL,
-    habilidad INT NOT NULL,
-    territorio INT NOT NULL,
-    ejercito INT NOT NULL,
-    economia INT NOT NULL,
-    poblacion INT NOT NULL
+    habilidad INT NOT NULL DEFAULT 0,
+    territorio INT NOT NULL DEFAULT 0,
+    ejercito INT NOT NULL DEFAULT 0,
+    economia INT NOT NULL DEFAULT 0,
+    poblacion INT NOT NULL DEFAULT 0,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
+    FOREIGN KEY (partida_id) REFERENCES partidas(partida_id)
 );
 
 CREATE TABLE mapas (
@@ -50,11 +52,13 @@ CREATE TABLE arbol_habilidades (
 
 CREATE TABLE habilidades (
     habilidad_id SERIAL PRIMARY KEY,
+    arbol_id INT NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     descripcion TEXT NOT NULL,
     bonificacion_economia INT NOT NULL,
     bonificacion_tropa INT NOT NULL,
-    costo INT NOT NULL
+    costo INT NOT NULL,
+    FOREIGN KEY(arbol_id) REFERENCES arbol_habilidades(arbol_id)
 );
 
 CREATE TABLE ejercitos_jugador (
