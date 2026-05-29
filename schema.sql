@@ -124,5 +124,9 @@ CREATE TABLE partidas (
 CREATE TABLE eventos_tiempo (
   evento_id INT, 
   tiempo_id INT
-  
+
+  PRIMARY KEY (evento_id, tiempo_id), 
+  FOREIGN KEY(evento_id) REFERENCES eventos(evento_id),
+  FOREIGN KEY(tiempo_id) REFERENCES tiempo(tiempo_id)
+
 ); 
