@@ -114,19 +114,11 @@ CREATE TABLE eventos (
   bonificacion INT NOT NULL
 );
 
-CREATE TABLE partidas (
-  partida_id SERIAL PRIMARY KEY, 
-  estado BOOLEAN NOT NULL DEFAULT TRUE,
-  fecha TIMESTAMP NOT NULL, 
-  tiempo INT NOT NULL
-); 
-
 CREATE TABLE eventos_tiempo (
   evento_id INT, 
-  tiempo_id INT
-
-  PRIMARY KEY (evento_id, tiempo_id), 
+  tiempo_id INT,
+  PRIMARY KEY(evento_id, tiempo_id), 
   FOREIGN KEY(evento_id) REFERENCES eventos(evento_id),
-  FOREIGN KEY(tiempo_id) REFERENCES tiempo(tiempo_id)
+  FOREIGN KEY(tiempo_id) REFERENCES tiempos(tiempo_id)
 
 ); 
