@@ -62,26 +62,25 @@ INSERT INTO tropas (tipo, costo, ataque, defensa) VALUES
 (2, 400, 50, 30), 
 (3, 500, 60, 5);   
 
-INSERT INTO infanterias (tropas_id, bono_defensa) VALUES
+INSERT INTO infanterias (tropa_id, bono_defensa) VALUES
 (1,5),
 (2,10),
 (3,7),
 (4, 8),
 (5, 2);
 
-INSERT INTO caballerias (tropas_id, bono_ataque) VALUES
+INSERT INTO caballerias (tropa_id, bono_ataque) VALUES
 (2,15),
 (3,20),
 (4,7),
 (1, 5),
 (5, 12);
 
-INSERT INTO artillerias (tropas_id,bono_ataque,  bono_defensa) VALUES
+INSERT INTO artillerias (tropa_id,bono_ataque,  bono_defensa) VALUES
 (2,15, 0),
 (3,5, 5),
 (4,10, 7),
 (5, 25, 2),
-(6, 40, 5);
 
 INSERT INTO tiempos (fecha_partida, velocidad, pausado) VALUES 
 ('2026-05-28 00:00:00', 1, FALSE),
