@@ -23,5 +23,5 @@
 **Desarrolladores:**
 * Alejandro Adriel Quispe Montes
 * Pablo Manuel Infantes Soto
-* Jhoao Paulo Pereyra Echave
+* Jhoao Paulo Pereyra Echave (jppaulo1)
 * Francisco Cucho Juarez
