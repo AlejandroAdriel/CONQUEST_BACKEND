@@ -24,4 +24,4 @@
 * Alejandro Adriel Quispe Montes (AlejandroAdriel)
 * Pablo Manuel Infantes Soto
 * Jhoao Paulo Pereyra Echave (jppaulo1)
-* Francisco Cucho Juarez
+* Francisco Cucho Juarez (francisko41)
