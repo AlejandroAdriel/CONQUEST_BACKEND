@@ -1,123 +1,86 @@
-INSERT INTO usuarios (correo, contrasena, nombre) VALUES 
-('general.kenobi@republica.com', 'contrasenaSegura123', 'Obi-Wan Kenobi'),
-('m.gomez@correo.com', 'admin456', 'María Gómez'),
-('jugador_elite@gaming.net', 'qwerty789', 'Carlos Ruiz'),
-('valeria.silva@correo.com', 'valejuegos45', 'Valeria Silva'),
-('arthur.pendragon@reino.com', 'excalibur123', 'Arturo Pendragon');
+INSERT INTO usuarios (correo, username, contrasena, nombre, pais) VALUES 
+('general.kenobi@republica.com', 'KENOBI', 'contrasenaSegura123', 'Obi-Wan Kenobi', 'Reino Unido'),
+('m.gomez@correo.com', 'MGOMEZ', 'admin456', 'María Gómez', 'España'),
+('jugador_elite@gaming.net', 'ELITE_CARLOS', 'qwerty789', 'Carlos Ruiz', 'México'),
+('valeria.silva@correo.com', 'VALE_JUEGOS', 'valejuegos45', 'Valeria Silva', 'Argentina'),
+('arthur.pendragon@reino.com', 'PENDRAGON', 'excalibur123', 'Arturo Pendragon', 'Reino Unido');
 
-INSERT INTO jugadores (usuario_id, partida_id,  habilidad, territorio, ejercito, economia, poblacion) VALUES 
-(1, 1, 10,  5, 1500, 5000, 10000), 
-(2, 1, 15,  3, 1200, 4000, 15000), 
-(3, 1, 12,  6, 1300, 3900, 13000), 
-(4, 1, 10,  5, 1500, 5000, 11000), 
-(5, 1, 12,  9, 1500, 6000, 12000), 
-  
+INSERT INTO partidas (estado, cuartel_general, fecha_creacion, tiempo_jugado) VALUES 
+(TRUE, 'ESTADOS UNIDOS', '2026-05-28 00:00:00', 3600),
+(TRUE, 'ALEMANIA', '2026-05-27 15:00:00', 7200),
+(FALSE, 'FRANCIA', '2026-05-25 10:00:00', 18000),
+(TRUE, 'JAPON', '2026-05-28 20:00:00', 4500),
+(FALSE, 'BRASIL', '2026-05-24 08:30:00', 24000);
+
+INSERT INTO jugadores (usuario_id, partida_id, habilidad_puntos, oro) VALUES 
+(1, 1, 10, 5000), 
+(2, 2, 15, 4000), 
+(3, 3, 12, 3900), 
+(4, 4, 10, 5000), 
+(5, 5, 12, 6000); 
+
+INSERT INTO ejercitos_jugador (jugador_id, infanteria, caballeria, artilleria) VALUES 
+(1, 5000, 2000, 500), 
+(2, 3000, 1000, 200), 
+(3, 1000, 500, 50), 
+(4, 8000, 4000, 1000), 
+(5, 1200, 800, 100);
 
 INSERT INTO mapas (nro_continentes, nro_paises) VALUES 
 (6, 42), 
-(4, 25), 
-(5, 30), 
-(7, 50), 
-(3, 15); 
+(4, 25);
 
 INSERT INTO continentes (nro_paises, mapa_id) VALUES 
 (12, 1), 
 (10, 1), 
 (8,  2), 
-(7,  2), 
-(15, 3); 
+(7,  2);
 
-INSERT INTO paises (nombre, ejercito, poblacion, economia, conquistado, continente_id) VALUES 
-('Argentina', 5000, 45000000, 3, FALSE, 1), 
-('Brasil', 8000, 210000000, 4, FALSE, 1),   
-('Canadá', 4000, 38000000, 5, FALSE, 2),    
-('Francia', 7000, 67000000, 5, TRUE, 3),    
-('Japón', 6000, 125000000, 5, FALSE, 4);   
+INSERT INTO paises (codigo_iso, nombre, ejercito, poblacion, economia, continente_id) VALUES 
+('ARG', 'Argentina', 5000, 45000000, 3, 1), 
+('BRA', 'Brasil', 8000, 210000000, 4, 1),   
+('CAN', 'Canadá', 4000, 38000000, 5, 2),    
+('FRA', 'Francia', 7000, 67000000, 5, 3),    
+('JPN', 'Japón', 6000, 125000000, 5, 4);
 
-INSERT INTO arbol_habilidades (tipo, nro_habilidades, progresion, ramas) VALUES
-(1, 5, 1, 2),
-(2, 3, 2, 1),
-(3, 4, 1, 3),
-(1, 6, 2, 2), 
-(2, 5, 3, 2);
+INSERT INTO partida_paises (partida_id, pais_id, conquistado, color_tactico) VALUES
+(1, 1, TRUE, '#3b82f6'),
+(1, 2, FALSE, '#1e293b');
 
-INSERT INTO habilidades (arbol_id, nombre, descripcion, bonificacion_economia, bonificacion_tropa, costo) VALUES
-(1,'Agricultura', 'Mejora la producción de recursos', 10, 0, 100),
-(1,'Infantería', 'Aumenta la fuerza de las tropas de infantería', 0, 15, 200),
-(1,'Comercio', 'Reduce costos en rutas comerciales', 15, 5, 150),
-(1,'Ingeniería', 'Mejora defensas y construcciones', 5, 10, 250),
-(1,'Diplomacia', 'Mejora relaciones y alianzas', 20, 0, 120);
+INSERT INTO arbol_habilidades (tipo, nro_habilidades) VALUES
+(1, 5),
+(2, 3);
 
-INSERT INTO ejercitos_jugador (nro_tropas) VALUES 
-(1500), 
-(3000), 
-(500), 
-(3500), 
-(1200);
+INSERT INTO habilidades (habilidad_id, arbol_id, nombre, descripcion, costo, categoria, rama) VALUES
+('D_ROOT', 1, 'Protocolo de Despertar', 'Mejora la producción', 100, 'desarrollo', 'Origen'),
+('M_ROOT', 2, 'Doctrina de Guerra', 'Aumenta fuerza infantería', 200, 'militar', 'Origen');
 
-INSERT INTO tropas (tipo, costo, ataque, defensa) VALUES 
-(1, 100, 15, 10), 
-(1, 150, 20, 25), 
-(2, 250, 35, 15), 
-(2, 400, 50, 30), 
-(3, 500, 60, 5);   
+INSERT INTO tropas (nombre_tropa, costo, ataque, defensa) VALUES 
+('Milicia Ligera', 100, 15, 10),     
+('Infantería Pesada', 150, 20, 25),  
+('Exploradores', 250, 35, 15),       
+('Tanques Ligeros', 400, 50, 30),    
+('Cañones Plasma', 500, 60, 5);      
 
 INSERT INTO infanterias (tropa_id, bono_defensa) VALUES
-(1,5),
-(2,10),
-(3,7),
-(4, 8),
-(5, 2);
+(1, 5),
+(2, 10);
 
 INSERT INTO caballerias (tropa_id, bono_ataque) VALUES
-(2,15),
-(3,20),
-(4,7),  
-(1, 5),
-(5, 12);
+(3, 20),
+(4, 7);
 
-INSERT INTO artillerias (tropa_id,bono_ataque,  bono_defensa) VALUES
-(2,15, 0),
-(3,5, 5),
-(4,10, 7),
-(5, 25, 2),
+INSERT INTO artillerias (tropa_id, bono_ataque, bono_defensa) VALUES
+(5, 25, 2);
 
 INSERT INTO tiempos (fecha_partida, velocidad, pausado) VALUES 
 ('2026-05-28 00:00:00', 1, FALSE),
-('2026-05-28 12:30:00', 2, FALSE),
-('2026-05-28 18:45:10', 1, TRUE),
-('2026-05-29 02:15:00', 3, FALSE),
-('2026-05-29 09:00:00', 1, TRUE);
+('2026-05-28 12:30:00', 2, FALSE);
 
-INSERT INTO eventos (descripcion, bonificacion) VALUES
-('Tormenta de Arena: Caos en tierra firme', -3),
-('Corte repentino de suministros: Hambruna en el campamento', -5),
-('Lluvia intensa: Avance Lento', -4),
-('Alianza concretada: Liderazgo solido', 6),
-('Discurso inspirador: Alza de impetu', 5); 
-
-INSERT INTO partidas (estado, fecha, tiempo) VALUES 
-(TRUE, '2026-05-28 00:00:00', 3600),
-(TRUE, '2026-05-27 15:00:00', 7200),
-(FALSE, '2026-05-25 10:00:00', 18000),
-(TRUE, '2026-05-28 20:00:00', 4500),
-(FALSE, '2026-05-24 08:30:00', 24000);
+INSERT INTO eventos (titulo, descripcion, bonificacion, tipo) VALUES
+('Tormenta de Arena', 'Caos en tierra firme', -3, 'alert'),
+('Alianza Concretada', 'Liderazgo sólido', 6, 'success'); 
 
 INSERT INTO eventos_tiempo (evento_id, tiempo_id) VALUES 
 (1, 1), 
-(2, 2), 
-(3, 3), 
-(4, 4), 
-(5, 5);
-
-UPDATE usuarios 
-SET contrasena = 'NuevaContrasena2026' 
-WHERE usuario_id = 4;
-
-UPDATE jugadores 
-SET habilidad = habilidad + 2
-WHERE jugador_id = 1;
-
-UPDATE paises 
-SET conquistado = TRUE, ejercito = 0 
-WHERE pais_id = 2;
+(2, 2);
