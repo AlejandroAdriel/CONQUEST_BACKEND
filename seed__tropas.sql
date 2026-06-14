@@ -21,3 +21,10 @@ INSERT INTO infanterias (tropa_id, bono_defensa_trinchera) VALUES
 (7, 2.5), 
 (8, 1.2), 
 (9, 3.0); 
+
+INSERT INTO caballerias (tropa_id, bono_ataque_flanqueo) VALUES
+(3, 2.5),
+(4, 3.5),
+(10, 2.0), 
+(11, 4.0), 
+(12, 1.8); 
