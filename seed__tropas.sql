@@ -14,3 +14,10 @@ INSERT INTO tropas (tropa_id, nombre_tropa, costo_base, multiplicador_combate) V
 (13, 'Lanzamisiles Enjambre', 150, 3.2),
 (14, 'Mortero de Pulso EMP', 110, 2.5),
 (15, 'Batería de Riel Magnético', 300, 5.0);
+
+INSERT INTO infanterias (tropa_id, bono_defensa_trinchera) VALUES
+(1, 1.5),
+(2, 2.0),
+(7, 2.5), 
+(8, 1.2), 
+(9, 3.0); 
