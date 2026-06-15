@@ -112,3 +112,163 @@ VALUES
         700,
         1300
     );
+
+INSERT INTO
+    habilidades (
+        habilidad_id,
+        nombre,
+        descripcion,
+        costo,
+        categoria,
+        rama,
+        eje_x,
+        eje_y
+    )
+VALUES
+    -- ── Rama: Infantería ───────────────────────────────────────────────────────
+    -- Nivel 1
+    (
+        'M_11',
+        'Reclutamiento Masivo',
+        'Activa protocolos de movilización masiva. Permite reclutar infantería a un coste un 20% menor y en mayores cantidades por ciclo.',
+        8000,
+        'militar',
+        'Infantería',
+        100,
+        1700
+    ),
+    -- Nivel 2
+    (
+        'M_12',
+        'Tácticas de Asalto',
+        'Dota a los batallones de infantería con manuales de combate urbano y asalto coordinado. Aumenta el poder de ataque de infantería en un 25%.',
+        20000,
+        'militar',
+        'Infantería',
+        400,
+        1700
+    ),
+    -- Nivel 3
+    (
+        'M_13',
+        'Supersoldados Mejorados',
+        'Programa de mejora genética y armadura exoesquelética para tropas de élite. Las unidades de infantería obtienen capacidades de combate excepcionales.',
+        45000,
+        'militar',
+        'Infantería',
+        700,
+        1700
+    ),
+    -- ── Rama: Caballería ───────────────────────────────────────────
+    -- Nivel 1
+    (
+        'M_21',
+        'Motorización',
+        'Motoriza las unidades de caballería con vehículos blindados ligeros. Aumenta la velocidad de despliegue y la movilidad táctica en el campo de batalla.',
+        10000,
+        'militar',
+        'Caballería',
+        100,
+        1850
+    ),
+    -- Nivel 2
+    (
+        'M_22',
+        'Blindados Pesados',
+        'Incorpora carros de combate de última generación. Las unidades de caballería aumentan su poder ofensivo en un 30% y su resistencia ante artillería enemiga.',
+        25000,
+        'militar',
+        'Caballería',
+        400,
+        1850
+    ),
+    -- Nivel 3
+    (
+        'M_23',
+        'Enjambre de Drones de Combate',
+        'Integra enjambres de drones autónomos coordinados por IA táctica. Proporciona superioridad aérea local y capacidad de penetración en posiciones reforzadas.',
+        50000,
+        'militar',
+        'Caballería',
+        700,
+        1850
+    ),
+    -- ── Rama: Artillería ───────────────────────────────────────────────────────
+    -- Nivel 1
+    (
+        'M_31',
+        'Artillería de Campaña',
+        'Despliega baterías de artillería móviles con munición de alta precisión. Aumenta el daño de artillería en un 20% y el alcance efectivo.',
+        9000,
+        'militar',
+        'Artillería',
+        100,
+        2000
+    ),
+    -- Nivel 2
+    (
+        'M_32',
+        'Misiles Guiados',
+        'Equipa los sistemas de artillería con misiles de guía láser y GPS. Permite ataques quirúrgicos a infraestructuras clave del enemigo.',
+        28000,
+        'militar',
+        'Artillería',
+        400,
+        2000
+    ),
+    -- Nivel 3
+    (
+        'M_33',
+        'Artillería Orbital',
+        'Proyectiles lanzados desde plataformas orbitales. Capacidad de bombardeo estratégico en cualquier punto del mapa con tiempo de respuesta mínimo.',
+        55000,
+        'militar',
+        'Artillería',
+        700,
+        2000
+    ),
+    -- ── Rama Especial: Investigación Médica ────────────────────────────────────
+    -- Nivel 1
+    (
+        'M_EXP_1',
+        'Medicina de Campo',
+        'Establece unidades médicas integradas en cada batallón. Reduce las bajas propias en combate y acelera la recuperación entre batallas.',
+        7000,
+        'militar',
+        'Médico',
+        100,
+        2150
+    ),
+    -- Nivel 2
+    (
+        'M_EXP_2',
+        'Biotecnología Táctica',
+        'Desarrolla sueros de rendimiento físico y resistencia al dolor. Las tropas propias obtienen mayor capacidad de combate sostenido en operaciones prolongadas.',
+        22000,
+        'militar',
+        'Médico',
+        400,
+        2150
+    ),
+    -- Nivel 3 
+    (
+        'M_EXP_3',
+        'Inyecciones de Nanobots Médicos',
+        'Nanobots médicos de autorreparación inyectados a todas las tropas. Efecto pasivo global: reduce la tasa de mortalidad de territorios conquistados en un -15% permanente.',
+        48000,
+        'militar',
+        'Médico',
+        700,
+        2150
+    ),
+    -- ── Habilidad Maestra (Convergente) ────────────────────────────────────────
+    (
+        'M_SEC',
+        'Cibernética de Vanguardia',
+        'Fusiona las tres ramas militares en un sistema de combate integrado: exoesqueletos, drones coordinados y artillería orbital bajo un único nodo de IA. Otorga supremacía militar total.',
+        120000,
+        'militar',
+        'Especial',
+        1050,
+        1850
+    );
