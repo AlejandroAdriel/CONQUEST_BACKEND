@@ -272,3 +272,35 @@ VALUES
         1050,
         1850
     );
+
+INSERT INTO
+    habilidad_prerrequisitos (habilidad_id, habilidad_requerida_id)
+VALUES
+    -- ── Rama Economía ──────────────────────────────────────────────────────────
+    ('D_ECO_2', 'D_ECO_1'),
+    ('D_ECO_3', 'D_ECO_2'),
+    -- ── Rama Expansión ─────────────────────────────────────────────────────────
+    ('D_EXP_2', 'D_EXP_1'),
+    ('D_EXP_3', 'D_EXP_2'),
+    -- ── Rama Tecnología ────────────────────────────────────────────────────────
+    ('D_TEC_2', 'D_TEC_1'),
+    -- Singularidad Tecnológica: convergente, requiere las tres ramas al nivel 3
+    ('D_TEC_3', 'D_ECO_3'),
+    ('D_TEC_3', 'D_EXP_3'),
+    ('D_TEC_3', 'D_TEC_2'),
+    -- ── Rama Infantería ────────────────────────────────────────────────────────
+    ('M_12', 'M_11'),
+    ('M_13', 'M_12'),
+    -- ── Rama Caballería ────────────────────────────────────────────────────────
+    ('M_22', 'M_21'),
+    ('M_23', 'M_22'),
+    -- ── Rama Artillería ────────────────────────────────────────────────────────
+    ('M_32', 'M_31'),
+    ('M_33', 'M_32'),
+    -- ── Rama Médica ────────────────────────────────────────────────────────────
+    ('M_EXP_2', 'M_EXP_1'),
+    ('M_EXP_3', 'M_EXP_2'),
+    -- ── Habilidad Maestra: Cibernética de Vanguardia ───────────────────────────
+    ('M_SEC', 'M_13'),
+    ('M_SEC', 'M_23'),
+    ('M_SEC', 'M_33');
