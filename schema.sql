@@ -88,10 +88,10 @@ CREATE TABLE habilidades (
     nombre VARCHAR(100) NOT NULL,
     descripcion TEXT NOT NULL,
     costo INT NOT NULL,
-    categoria VARCHAR(50),  
-    rama VARCHAR(50),
-    eje_x INT,              
-    eje_y INT,
+    categoria VARCHAR(50) NOT NULL,  
+    rama VARCHAR(50) NOT NULL,
+    eje_x INT NOT NULL,              
+    eje_y INT NOT NULL,
 );
 
 CREATE TABLE partida_habilidades (
