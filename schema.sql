@@ -85,7 +85,6 @@ CREATE TABLE arbol_habilidades (
 
 CREATE TABLE habilidades (
     habilidad_id VARCHAR(20) PRIMARY KEY, 
-    arbol_id INT NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     descripcion TEXT NOT NULL,
     costo INT NOT NULL,
@@ -93,7 +92,6 @@ CREATE TABLE habilidades (
     rama VARCHAR(50),
     eje_x INT,              
     eje_y INT,
-    FOREIGN KEY(arbol_id) REFERENCES arbol_habilidades(arbol_id)
 );
 
 CREATE TABLE partida_habilidades (
