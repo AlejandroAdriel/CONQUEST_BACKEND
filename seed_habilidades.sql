@@ -1,3 +1,5 @@
+-- SECCIÓN 1: HABILIDADES (Desarrollo y Doctrina Militar)
+-- ─────────────────────────────────────────────────────────────────────────────
 INSERT INTO
     habilidades (
         habilidad_id,
@@ -10,297 +12,443 @@ INSERT INTO
         eje_y
     )
 VALUES
-    -- ── Rama: Economía ─────────────────────────────────────────────────────────
-    -- Nivel 1
+    -- ===================== INFRAESTRUCTURA (DESARROLLO) =====================
     (
-        'D_ECO_1',
-        'Mercados Libres',
-        'Liberaliza los circuitos comerciales internos, aumentando el ingreso diario de territorios conquistados en un 5%. Primer escalón hacia la hegemonía financiera.',
-        5000,
+        'D_ROOT',
+        'Protocolo de Inicialización: Despertar',
+        'Inicializa el núcleo táctico de la IA y el mapeo satelital básico. Requisito fundamental para toda investigación. Bono: Desbloquea la rama de desarrollo.',
+        2000,
         'desarrollo',
-        'Economía',
-        100,
-        1000
+        'Origen',
+        200,
+        2000
     ),
-    -- Nivel 2
     (
-        'D_ECO_2',
-        'Algoritmos Financieros',
-        'Implementa sistemas de trading algorítmico y análisis predictivo. Aumenta en +15% todos los ingresos generados por territorios bajo control. Sinergia activa durante la simulación.',
-        15000,
+        'D_B1_1',
+        'Red de Extracción Cuántica',
+        'Optimiza la minería de recursos descentralizada en zonas ocupadas. Bono: Aumenta la generación diaria de oro de los territorios en un +10%.',
+        12000,
         'desarrollo',
-        'Economía',
-        400,
-        1000
+        'Bifurcacion',
+        600,
+        1500
     ),
-    -- Nivel 3
     (
-        'D_ECO_3',
-        'Hegemonía Monetaria',
-        'Establece el crédito de la facción como moneda de reserva global. Añade un bono de expansión: +8% de ingresos adicionales por cada nación conquistada más allá de la quinta.',
-        35000,
+        'D_B1_2',
+        'Algoritmos de Enrutamiento Neuronal',
+        'Establece autopistas de datos para coordinar recursos locales. Bono: Aumenta la tasa de crecimiento económico diario en un +25%.',
+        12000,
         'desarrollo',
-        'Economía',
-        700,
-        1000
+        'Bifurcacion',
+        600,
+        2000
     ),
-    -- ── Rama: Expansión ────────────────────────────────────────────────────────
-    -- Nivel 1
+    (
+        'D_B1_3',
+        'Logística Automatizada de Flotas',
+        'Automatiza las trayectorias de los vehículos de suministro terrestres. Bono: Reduce el costo en oro para movilizar tropas en un -10%.',
+        12000,
+        'desarrollo',
+        'Bifurcacion',
+        600,
+        2500
+    ),
     (
         'D_EXP_1',
-        'Logística Avanzada',
-        'Optimiza las cadenas de suministro militares y civiles, reduciendo el coste de mantenimiento de tropas en un 10% y el tiempo de movilización.',
-        6000,
+        'Minería de Yacimientos Profundos',
+        'Despliega taladros térmicos automatizados para metales raros. Bono: Aumenta la generación diaria de oro de los territorios en un +15% adicional.',
+        30000,
         'desarrollo',
-        'Expansión',
-        100,
-        1150
+        'Expansion',
+        1100,
+        1000
     ),
-    -- Nivel 2
     (
         'D_EXP_2',
-        'Red de Satélites',
-        'Lanza una constelación de satélites de comunicación y reconocimiento. Proporciona inteligencia en tiempo real sobre movimientos de ejércitos enemigos.',
-        18000,
+        'Coprocesadores Cuánticos de Silicio',
+        'Integra unidades de coprocesamiento para acelerar las finanzas. Bono: Reduce el costo diario de mantenimiento de todas tus tropas en un -15%.',
+        30000,
         'desarrollo',
-        'Expansión',
-        400,
-        1150
+        'Expansion',
+        1100,
+        1500
     ),
-    -- Nivel 3
     (
         'D_EXP_3',
-        'Dominio Orbital',
-        'Establece supremacía en la órbita baja terrestre. Permite coordinación de ataques precisos desde el espacio, otorgando ventaja táctica decisiva en invasiones.',
-        40000,
+        'Algoritmos Financieros',
+        'Modelos macroeconómicos predictivos para arbitraje y comercio internacional. Bono: Aumenta la generación diaria de oro de los territorios en un +20% adicional.',
+        30000,
         'desarrollo',
-        'Expansión',
-        700,
-        1150
+        'Expansion',
+        1100,
+        2000
     ),
-    -- ── Rama: Tecnología ───────────────────────────────────────────────────────
-    -- Nivel 1
     (
-        'D_TEC_1',
-        'Investigación Básica',
-        'Establece centros de I+D en los territorios controlados. Reduce el tiempo de desbloqueo de todas las tecnologías futuras en un 10%.',
-        4000,
+        'D_EXP_4',
+        'Nodos Logísticos Subterráneos',
+        'Construye terminales de almacenamiento blindadas bajo tierra. Bono: Reduce el costo en oro para movilizar tropas en un -20% adicional.',
+        30000,
         'desarrollo',
-        'Tecnología',
-        100,
-        1300
+        'Expansion',
+        1100,
+        2500
     ),
-    -- Nivel 2
     (
-        'D_TEC_2',
-        'Inteligencia Artificial',
-        'Despliega sistemas de IA para optimización logística, predicción de eventos y gestión de recursos. Pilar estratégico para las tecnologías de nivel 3.',
-        20000,
+        'D_EXP_5',
+        'Constelación de Microsatélites',
+        'Despliega una red orbital de rastreo geográfico y comercial. Bono: Reduce el tiempo de viaje de todas las invasiones en 7 días virtuales.',
+        30000,
         'desarrollo',
-        'Tecnología',
-        400,
-        1300
+        'Expansion',
+        1100,
+        3000
     ),
-    -- Nivel 3 — Convergente: requiere las tres ramas
     (
-        'D_TEC_3',
+        'D_CONV_1',
+        'Perforación Geotérmica Mantélica',
+        'Explota la energía calórica profunda para alimentar los mainframes. Bono: Aumenta la generación diaria de oro de los territorios en un +25% adicional.',
+        75000,
+        'desarrollo',
+        'Convergencia',
+        1600,
+        1500
+    ),
+    (
+        'D_CONV_2',
+        'IA Directiva de Producción Automatizada',
+        'Una IA ejecutiva coordina los recursos de guerra de manera óptima. Bono: Reduce el costo diario de mantenimiento de todas tus tropas en un -25% adicional.',
+        75000,
+        'desarrollo',
+        'Convergencia',
+        1600,
+        2000
+    ),
+    (
+        'D_CONV_3',
+        'Red de Trenes Maglev Transcontinentales',
+        'Instala líneas ferroviarias de levitación magnética ultrarrápida. Bono: Aumenta el límite de movilización de población al 10% (Base: 5%).',
+        75000,
+        'desarrollo',
+        'Convergencia',
+        1600,
+        2500
+    ),
+    (
+        'D_SUPER_1',
+        'Mente Enjambre de Servidores Cuánticos',
+        'Sincroniza todos los data centers regionales bajo una sola red cuántica. Bono: Reduce el costo de movilización de tropas en un -35% adicional.',
+        180000,
+        'desarrollo',
+        'SuperNodos',
+        2200,
+        1750
+    ),
+    (
+        'D_SUPER_2',
         'Singularidad Tecnológica',
-        'La IA alcanza capacidad de auto-mejora controlada. Efecto global permanente: +20% a todos los ingresos, -15% al costo de todas las tropas, +10% de velocidad de investigación.',
-        80000,
+        'La IA alcanza la automejora exponencial optimizando la biósfera civil. Bono: Aumenta la natalidad efectiva de tus países en un +25% (mayor crecimiento poblacional).',
+        180000,
         'desarrollo',
-        'Tecnología',
-        700,
-        1300
-    );
-
-INSERT INTO
-    habilidades (
-        habilidad_id,
-        nombre,
-        descripcion,
-        costo,
-        categoria,
-        rama,
-        eje_x,
-        eje_y
-    )
-VALUES
-    -- ── Rama: Infantería ───────────────────────────────────────────────────────
-    -- Nivel 1
-    (
-        'M_11',
-        'Reclutamiento Masivo',
-        'Activa protocolos de movilización masiva. Permite reclutar infantería a un coste un 20% menor y en mayores cantidades por ciclo.',
-        8000,
-        'militar',
-        'Infantería',
-        100,
-        1700
+        'SuperNodos',
+        2200,
+        2250
     ),
-    -- Nivel 2
     (
-        'M_12',
-        'Tácticas de Asalto',
-        'Dota a los batallones de infantería con manuales de combate urbano y asalto coordinado. Aumenta el poder de ataque de infantería en un 25%.',
-        20000,
-        'militar',
-        'Infantería',
-        400,
-        1700
-    ),
-    -- Nivel 3
-    (
-        'M_13',
-        'Supersoldados Mejorados',
-        'Programa de mejora genética y armadura exoesquelética para tropas de élite. Las unidades de infantería obtienen capacidades de combate excepcionales.',
-        45000,
-        'militar',
-        'Infantería',
-        700,
-        1700
-    ),
-    -- ── Rama: Caballería ───────────────────────────────────────────
-    -- Nivel 1
-    (
-        'M_21',
-        'Motorización',
-        'Motoriza las unidades de caballería con vehículos blindados ligeros. Aumenta la velocidad de despliegue y la movilidad táctica en el campo de batalla.',
-        10000,
-        'militar',
-        'Caballería',
-        100,
-        1850
-    ),
-    -- Nivel 2
-    (
-        'M_22',
-        'Blindados Pesados',
-        'Incorpora carros de combate de última generación. Las unidades de caballería aumentan su poder ofensivo en un 30% y su resistencia ante artillería enemiga.',
-        25000,
-        'militar',
-        'Caballería',
-        400,
-        1850
-    ),
-    -- Nivel 3
-    (
-        'M_23',
-        'Enjambre de Drones de Combate',
-        'Integra enjambres de drones autónomos coordinados por IA táctica. Proporciona superioridad aérea local y capacidad de penetración en posiciones reforzadas.',
-        50000,
-        'militar',
-        'Caballería',
-        700,
-        1850
-    ),
-    -- ── Rama: Artillería ───────────────────────────────────────────────────────
-    -- Nivel 1
-    (
-        'M_31',
-        'Artillería de Campaña',
-        'Despliega baterías de artillería móviles con munición de alta precisión. Aumenta el daño de artillería en un 20% y el alcance efectivo.',
-        9000,
-        'militar',
-        'Artillería',
-        100,
+        'D_ULTIMATE',
+        'Asimilación Planetaria Total',
+        'Integra el núcleo de la IA directamente en la red de los gobiernos globales. Bono: Otorga una probabilidad del 2% diario de anexar un país hostil de manera automática y pacífica.',
+        450000,
+        'desarrollo',
+        'Definitiva',
+        2800,
         2000
     ),
-    -- Nivel 2
+    -- ===================== DOCTRINA MILITAR =====================
     (
-        'M_32',
-        'Misiles Guiados',
-        'Equipa los sistemas de artillería con misiles de guía láser y GPS. Permite ataques quirúrgicos a infraestructuras clave del enemigo.',
-        28000,
+        'M_ROOT',
+        'Doctrina de Guerra Total',
+        'Establece el protocolo primario de movilización bélica global. Requisito para toda la doctrina militar. Bono: Desbloquea la rama militar.',
+        1000,
         'militar',
-        'Artillería',
-        400,
+        'Origen',
+        200,
         2000
     ),
-    -- Nivel 3
     (
-        'M_33',
-        'Artillería Orbital',
-        'Proyectiles lanzados desde plataformas orbitales. Capacidad de bombardeo estratégico en cualquier punto del mapa con tiempo de respuesta mínimo.',
-        55000,
+        'M_B1_1',
+        'Tácticas de Infantería Ligera',
+        'Optimiza el armamento individual y la cohesión de escuadras básicas. Bono: Aumenta el poder de combate de la Infantería en un +15%.',
+        5000,
         'militar',
-        'Artillería',
-        700,
-        2000
+        'Bifurcacion',
+        600,
+        1250
     ),
-    -- ── Rama Especial: Investigación Médica ────────────────────────────────────
-    -- Nivel 1
+    (
+        'M_B1_2',
+        'Tácticas de Caballería Ligera',
+        'Estrategia enfocada en asaltos rápidos con vehículos blindados ligeros. Bono: Aumenta el poder de combate de la Caballería en un +15%.',
+        5000,
+        'militar',
+        'Bifurcacion',
+        600,
+        1750
+    ),
+    (
+        'M_B1_3',
+        'Tácticas de Artillería Ligera',
+        'Software de cálculo de trayectoria integrado en piezas de artillería básica. Bono: Aumenta el poder de combate de la Artillería en un +15%.',
+        5000,
+        'militar',
+        'Bifurcacion',
+        600,
+        2250
+    ),
+    (
+        'M_B1_4',
+        'Estrategia de Fortificación Táctica',
+        'Despliega búnkeres de campaña temporales y fortines móviles. Bono: Reduce las bajas en combate del jugador en un -10%.',
+        5000,
+        'militar',
+        'Bifurcacion',
+        600,
+        2750
+    ),
     (
         'M_EXP_1',
-        'Medicina de Campo',
-        'Establece unidades médicas integradas en cada batallón. Reduce las bajas propias en combate y acelera la recuperación entre batallas.',
-        7000,
+        'Implantes de Reflejos Neurales',
+        'Chips neurales que aceleran los tiempos de respuesta del infante en combate. Bono: Aumenta el poder de combate de la Infantería en un +25% adicional.',
+        18000,
         'militar',
-        'Médico',
-        100,
-        2150
+        'Expansion',
+        1100,
+        1000
     ),
-    -- Nivel 2
     (
         'M_EXP_2',
-        'Biotecnología Táctica',
-        'Desarrolla sueros de rendimiento físico y resistencia al dolor. Las tropas propias obtienen mayor capacidad de combate sostenido en operaciones prolongadas.',
-        22000,
+        'Cuerpos de Ingenieros de Combate',
+        'Unidades especializadas en demolición y franqueo de obstáculos. Bono: Reduce el poder defensivo de la IA enemiga en un -15%.',
+        18000,
         'militar',
-        'Médico',
-        400,
-        2150
+        'Expansion',
+        1100,
+        1400
     ),
-    -- Nivel 3 
     (
         'M_EXP_3',
-        'Inyecciones de Nanobots Médicos',
-        'Nanobots médicos de autorreparación inyectados a todas las tropas. Efecto pasivo global: reduce la tasa de mortalidad de territorios conquistados en un -15% permanente.',
-        48000,
+        'Protocolo de Biorecuperación Avanzado',
+        'Nanotecnología médica aplicada a primeros auxilios en combate. Bono: Reduce la tasa de mortalidad en conquistados en un -15% permanente (ayuda a recuperar población).',
+        18000,
         'militar',
-        'Médico',
-        700,
-        2150
+        'Expansion',
+        1100,
+        1800
     ),
-    -- ── Habilidad Maestra (Convergente) ────────────────────────────────────────
     (
-        'M_SEC',
-        'Cibernética de Vanguardia',
-        'Fusiona las tres ramas militares en un sistema de combate integrado: exoesqueletos, drones coordinados y artillería orbital bajo un único nodo de IA. Otorga supremacía militar total.',
+        'M_EXP_4',
+        'Baterías de Saturación Balística',
+        'Doctrina de bombardeo masivo coordinado por satélite. Bono: Aumenta el poder de combate de la Artillería en un +25% adicional.',
+        18000,
+        'militar',
+        'Expansion',
+        1100,
+        2200
+    ),
+    (
+        'M_EXP_5',
+        'Doctrina Blitzkrieg',
+        'Estrategia de avance blindado rápido centrada en la caballería. Bono: Aumenta el poder de combate de la Caballería en un +25% adicional.',
+        18000,
+        'militar',
+        'Expansion',
+        1100,
+        2600
+    ),
+    (
+        'M_EXP_6',
+        'Ciber-Sabotaje de Servidores de Reclutamiento',
+        'Troyano que altera las cuotas de reclutamiento enemigas. Bono: Reduce el volumen de reclutamiento de tropas de la IA en un -25% de forma global.',
+        18000,
+        'militar',
+        'Expansion',
+        1100,
+        3000
+    ),
+    (
+        'M_CONV_1',
+        'Doctrina de Asalto Aerotransportado',
+        'Despliegue directo de tropas aerotransportadas de élite tras líneas enemigas. Bono: Aumenta el poder de combate de la Infantería en un +35% adicional.',
+        50000,
+        'militar',
+        'Convergencia',
+        1600,
+        1250
+    ),
+    (
+        'M_CONV_2',
+        'Logística de Suministros Blindados',
+        'Distribución de suministro inteligente y blindaje modular de vehículos. Bono: Reduce las bajas en combate del jugador en un -20% adicional.',
+        50000,
+        'militar',
+        'Convergencia',
+        1600,
+        1750
+    ),
+    (
+        'M_CONV_3',
+        'Artillería de Precisión Quirúrgica',
+        'Proyectiles guiados por láser de alta penetración. Bono: Aumenta el poder de combate de la Artillería en un +35% adicional.',
+        50000,
+        'militar',
+        'Convergencia',
+        1600,
+        2250
+    ),
+    (
+        'M_CONV_4',
+        'Inyección Electromagnética Regional (EMP)',
+        'Pulso EMP localizado que inhabilita las comunicaciones enemigas. Bono: Reduce el volumen de reclutamiento de la IA en el país atacado en un -50%.',
+        50000,
+        'militar',
+        'Convergencia',
+        1600,
+        2750
+    ),
+    (
+        'M_ORB_1',
+        'Silos de Inserción Orbital Inmediata',
+        'Cápsulas de caída desde órbita baja para lanzar infantería pesada directo al combate. Bono: Aumenta el poder de combate de la Infantería en un +40% y reduce sus bajas en un -15% general.',
         120000,
         'militar',
-        'Especial',
-        1050,
-        1850
+        'Orbital',
+        2100,
+        1250
+    ),
+    (
+        'M_ORB_2',
+        'Red de Escudos Deflectores de Plasma',
+        'Domos electromagnéticos protectores en el campo de batalla. Bono: Reduce las bajas en combate del jugador en un -30% en general.',
+        120000,
+        'militar',
+        'Orbital',
+        2100,
+        1750
+    ),
+    (
+        'M_ORB_3',
+        'Láseres de Precisión Orbital',
+        'Fuego de apoyo orbital pesado sincronizado desde el espacio. Bono: Aumenta el poder de combate de la Caballería y de la Artillería en un +35% adicional.',
+        120000,
+        'militar',
+        'Orbital',
+        2100,
+        2250
+    ),
+    (
+        'M_ORB_4',
+        'Drones de Reconocimiento Estratosférico',
+        'Drones solares que limpian la interferencia local de comunicaciones. Bono: Disipa la niebla de guerra global, mostrando las tropas enemigas de todos los países de manera permanente.',
+        120000,
+        'militar',
+        'Orbital',
+        2100,
+        2750
+    ),
+    (
+        'M_PROTO_1',
+        'Enjambres de Drones Asesinos Autónomos',
+        'Millones de microdrones suicidas coordinados por una sub-IA bélica. Bono: Aumenta el poder de combate de todas tus tropas en un +40% general.',
+        300000,
+        'militar',
+        'Prototipos',
+        2700,
+        1750
+    ),
+    (
+        'M_PROTO_2',
+        'Artillería Orbital de Iones',
+        'Cañón orbital de partículas cargadas que destruye fortificaciones. Bono: Reduce a la mitad (-50%) el poder defensivo de la IA enemiga a nivel mundial.',
+        300000,
+        'militar',
+        'Prototipos',
+        2700,
+        2250
+    ),
+    (
+        'M_ULTIMATE',
+        'Ciber-Sometimiento Global: Protocolo Omega',
+        'Inyección de un supervirus en la red de mando global de la IA. Bono: Desactiva drasticamente el reclutamiento de tropas de la IA a nivel mundial y reduce su defensa en un -40% de forma permanente.',
+        700000,
+        'militar',
+        'Definitiva',
+        3300,
+        2000
     );
 
+-- ─────────────────────────────────────────────────────────────────────────────
+-- SECCIÓN 2: PRERREQUISITOS (habilidad_prerrequisitos)
+-- ─────────────────────────────────────────────────────────────────────────────
 INSERT INTO
     habilidad_prerrequisitos (habilidad_id, habilidad_requerida_id)
 VALUES
-    -- ── Rama Economía ──────────────────────────────────────────────────────────
-    ('D_ECO_2', 'D_ECO_1'),
-    ('D_ECO_3', 'D_ECO_2'),
-    -- ── Rama Expansión ─────────────────────────────────────────────────────────
-    ('D_EXP_2', 'D_EXP_1'),
-    ('D_EXP_3', 'D_EXP_2'),
-    -- ── Rama Tecnología ────────────────────────────────────────────────────────
-    ('D_TEC_2', 'D_TEC_1'),
-    -- Singularidad Tecnológica: convergente, requiere las tres ramas al nivel 3
-    ('D_TEC_3', 'D_ECO_3'),
-    ('D_TEC_3', 'D_EXP_3'),
-    ('D_TEC_3', 'D_TEC_2'),
-    -- ── Rama Infantería ────────────────────────────────────────────────────────
-    ('M_12', 'M_11'),
-    ('M_13', 'M_12'),
-    -- ── Rama Caballería ────────────────────────────────────────────────────────
-    ('M_22', 'M_21'),
-    ('M_23', 'M_22'),
-    -- ── Rama Artillería ────────────────────────────────────────────────────────
-    ('M_32', 'M_31'),
-    ('M_33', 'M_32'),
-    -- ── Rama Médica ────────────────────────────────────────────────────────────
-    ('M_EXP_2', 'M_EXP_1'),
-    ('M_EXP_3', 'M_EXP_2'),
-    -- ── Habilidad Maestra: Cibernética de Vanguardia ───────────────────────────
-    ('M_SEC', 'M_13'),
-    ('M_SEC', 'M_23'),
-    ('M_SEC', 'M_33');
+    -- Rama Desarrollo
+    ('D_B1_1', 'D_ROOT'),
+    ('D_B1_2', 'D_ROOT'),
+    ('D_B1_3', 'D_ROOT'),
+    ('D_EXP_1', 'D_B1_1'),
+    ('D_EXP_2', 'D_B1_1'),
+    ('D_EXP_2', 'D_B1_2'),
+    ('D_EXP_3', 'D_B1_2'),
+    ('D_EXP_4', 'D_B1_2'),
+    ('D_EXP_4', 'D_B1_3'),
+    ('D_EXP_5', 'D_B1_3'),
+    ('D_CONV_1', 'D_EXP_1'),
+    ('D_CONV_1', 'D_EXP_2'),
+    ('D_CONV_2', 'D_EXP_2'),
+    ('D_CONV_2', 'D_EXP_4'),
+    ('D_CONV_3', 'D_EXP_4'),
+    ('D_CONV_3', 'D_EXP_5'),
+    ('D_SUPER_1', 'D_CONV_1'),
+    ('D_SUPER_1', 'D_CONV_2'),
+    ('D_SUPER_2', 'D_CONV_2'),
+    ('D_SUPER_2', 'D_CONV_3'),
+    ('D_ULTIMATE', 'D_SUPER_1'),
+    ('D_ULTIMATE', 'D_SUPER_2'),
+    -- Rama Doctrina Militar
+    ('M_B1_1', 'M_ROOT'),
+    ('M_B1_2', 'M_ROOT'),
+    ('M_B1_3', 'M_ROOT'),
+    ('M_B1_4', 'M_ROOT'),
+    ('M_EXP_1', 'M_B1_1'),
+    ('M_EXP_2', 'M_B1_1'),
+    ('M_EXP_2', 'M_B1_2'),
+    ('M_EXP_3', 'M_B1_2'),
+    ('M_EXP_4', 'M_B1_3'),
+    ('M_EXP_5', 'M_B1_3'),
+    ('M_EXP_5', 'M_B1_4'),
+    ('M_EXP_6', 'M_B1_4'),
+    ('M_CONV_1', 'M_EXP_1'),
+    ('M_CONV_1', 'M_EXP_2'),
+    ('M_CONV_1', 'M_EXP_3'),
+    ('M_CONV_2', 'M_EXP_2'),
+    ('M_CONV_2', 'M_EXP_3'),
+    ('M_CONV_2', 'M_EXP_4'),
+    ('M_CONV_3', 'M_EXP_4'),
+    ('M_CONV_3', 'M_EXP_5'),
+    ('M_CONV_4', 'M_EXP_5'),
+    ('M_CONV_4', 'M_EXP_6'),
+    ('M_ORB_1', 'M_CONV_1'),
+    ('M_ORB_2', 'M_CONV_1'),
+    ('M_ORB_2', 'M_CONV_2'),
+    ('M_ORB_3', 'M_CONV_2'),
+    ('M_ORB_3', 'M_CONV_3'),
+    ('M_ORB_4', 'M_CONV_3'),
+    ('M_ORB_4', 'M_CONV_4'),
+    ('M_PROTO_1', 'M_ORB_1'),
+    ('M_PROTO_1', 'M_ORB_2'),
+    ('M_PROTO_1', 'M_ORB_3'),
+    ('M_PROTO_2', 'M_ORB_2'),
+    ('M_PROTO_2', 'M_ORB_3'),
+    ('M_PROTO_2', 'M_ORB_4'),
+    ('M_ULTIMATE', 'M_PROTO_1'),
+    ('M_ULTIMATE', 'M_PROTO_2');
