@@ -92,3 +92,12 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX infanterias_pkey ON public.infanterias USING btree (tropa_id);
 ```
+
+# 11. Clave Primaria de Caballerías
+Tabla: `caballerias`
+Columna: `tropa_id`
+Nombre del índice: `caballerias_pkey`
+Código SQL:
+```sql
+CREATE UNIQUE INDEX caballerias_pkey ON public.caballerias USING btree (tropa_id);
+```
