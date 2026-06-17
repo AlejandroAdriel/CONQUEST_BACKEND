@@ -56,3 +56,12 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX partidas_pkey ON public.partidas USING btree (partida_id);
 ```
+
+# 7. Comandante Único de Partida
+Tabla: `partidas`
+Columna: `commander_id`
+Nombre del índice: `partidas_commander_id_key`
+Código SQL:
+```sql
+CREATE UNIQUE INDEX partidas_commander_id_key ON public.partidas USING btree (commander_id);
+```
