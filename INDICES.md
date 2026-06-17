@@ -101,3 +101,12 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX caballerias_pkey ON public.caballerias USING btree (tropa_id);
 ```
+
+# 12. Clave Primaria de Artillerías
+Tabla: `artillerias`
+Columna: `tropa_id`
+Nombre del índice: `artillerias_pkey`
+Código SQL:
+```sql
+CREATE UNIQUE INDEX artillerias_pkey ON public.artillerias USING btree (tropa_id);
+```
