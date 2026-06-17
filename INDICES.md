@@ -146,3 +146,12 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX habilidad_prerrequisitos_pkey ON public.habilidad_prerrequisitos USING btree (habilidad_id, habilidad_requerida_id);
 ```
+
+# 17. Habilidades por Partida (Compuesta)
+Tabla: `partida_habilidades`
+Columna: `partida_id, habilidad_id`
+Nombre del índice: `partida_habilidades_pkey`
+Código SQL:
+```sql
+CREATE UNIQUE INDEX partida_habilidades_pkey ON public.partida_habilidades USING btree (partida_id, habilidad_id);
+```
