@@ -15,13 +15,16 @@ CREATE TABLE
 CREATE TABLE
     partidas (
         partida_id SERIAL PRIMARY KEY,
-        estado BOOLEAN NOT NULL DEFAULT TRUE,
-        cuartel_general VARCHAR(100),
-        dias_campana INT DEFAULT 0,
-        porcentaje_dominio DECIMAL(5, 2) DEFAULT 0.0,
-        fecha_creacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        ultima_vez_guardado TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        tiempo_jugado INT NOT NULL DEFAULT 0
+        commander_id VARCHAR(100) NOT NULL UNIQUE,
+        estado_activo BOOLEAN DEFAULT TRUE NOT NULL,
+        dias_campana INT DEFAULT 1 NOT NULL,
+        porcentaje_dominio NUMERIC(5, 2) DEFAULT 0.00 NOT NULL,
+        fecha_creacion TIMESTAMP
+        WITH
+            TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+            ultima_vez_guardado TIMESTAMP
+        WITH
+            TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
     );
 
 CREATE TABLE
