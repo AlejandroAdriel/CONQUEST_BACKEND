@@ -110,3 +110,12 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX artillerias_pkey ON public.artillerias USING btree (tropa_id);
 ```
+
+# 13. Clave Primaria del Árbol de Habilidades
+Tabla: `arbol_habilidades`
+Columna: `arbol_id`
+Nombre del índice: `arbol_habilidades_pkey`
+Código SQL:
+```sql
+CREATE UNIQUE INDEX arbol_habilidades_pkey ON public.arbol_habilidades USING btree (arbol_id);
+```
