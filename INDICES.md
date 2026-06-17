@@ -65,3 +65,12 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX partidas_commander_id_key ON public.partidas USING btree (commander_id);
 ```
+
+# 8. Clave Primaria de Tropas
+Tabla: `tropas`
+Columna: `tropa_id`
+Nombre del índice: `tropas_pkey`
+Código SQL:
+```sql
+CREATE UNIQUE INDEX tropas_pkey ON public.tropas USING btree (tropa_id);
+```
