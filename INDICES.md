@@ -74,3 +74,12 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX tropas_pkey ON public.tropas USING btree (tropa_id);
 ```
+
+# 9. Nombre Único de Tropa
+Tabla: `tropas`
+Columna: `nombre_tropa`
+Nombre del índice: `tropas_nombre_tropa_key`
+Código SQL:
+```sql
+CREATE UNIQUE INDEX tropas_nombre_tropa_key ON public.tropas USING btree (nombre_tropa);
+```
