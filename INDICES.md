@@ -119,3 +119,12 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX arbol_habilidades_pkey ON public.arbol_habilidades USING btree (arbol_id);
 ```
+
+# 14. Nombre Único del Árbol de Habilidades
+Tabla: `arbol_habilidades`
+Columna: `nombre_arbol`
+Nombre del índice: `arbol_habilidades_nombre_arbol_key`
+Código SQL:
+```sql
+CREATE UNIQUE INDEX arbol_habilidades_nombre_arbol_key ON public.arbol_habilidades USING btree (nombre_arbol);
+```
