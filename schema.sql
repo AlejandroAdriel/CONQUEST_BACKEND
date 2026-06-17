@@ -109,13 +109,12 @@ CREATE TABLE
 
 CREATE TABLE
     partida_habilidades (
-        progreso_id SERIAL PRIMARY KEY,
         partida_id INT NOT NULL,
-        habilidad_id VARCHAR(20) NOT NULL,
-        desbloqueada BOOLEAN NOT NULL DEFAULT FALSE,
-        en_desarrollo BOOLEAN NOT NULL DEFAULT FALSE,
-        FOREIGN KEY (partida_id) REFERENCES partidas (partida_id),
-        FOREIGN KEY (habilidad_id) REFERENCES habilidades (habilidad_id)
+        habilidad_id VARCHAR(50) REFERENCES habilidades (habilidad_id) ON DELETE CASCADE,
+        fecha_desbloqueo TIMESTAMP
+        WITH
+            TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (partida_id, habilidad_id)
     );
 
 CREATE TABLE
