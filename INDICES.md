@@ -9,5 +9,14 @@ Columna: `usuario_id`
 Nombre del índice: `usuarios_pkey`
 Código SQL:
 ```sql
-`CREATE UNIQUE INDEX usuarios_pkey ON public.usuarios USING btree (usuario_id)`
+CREATE UNIQUE INDEX usuarios_pkey ON public.usuarios USING btree (usuario_id)
+```
+
+# 2. Correo Único de Usuarios
+Tabla: `usuarios`
+Columna: `correo`
+Nombre del índice: `usuarios_correo_key`
+Código SQL:
+```sql
+CREATE UNIQUE INDEX usuarios_correo_key ON public.usuarios USING btree (correo);
 ```
