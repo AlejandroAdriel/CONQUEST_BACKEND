@@ -47,3 +47,12 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX unica_relacion_sesion ON public.jugadores USING btree (usuario_id, partida_id);
 ```
+
+# 6. Clave Primaria de Partidas
+Tabla: `partidas`
+Columna: `partida_id`
+Nombre del índice: `partidas_pkey`
+Código SQL:
+```sql
+CREATE UNIQUE INDEX partidas_pkey ON public.partidas USING btree (partida_id);
+```
