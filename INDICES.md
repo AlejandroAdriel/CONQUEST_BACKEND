@@ -38,3 +38,12 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX jugadores_pkey ON public.jugadores USING btree (jugador_id);
 ```
+
+# 5. Relación de Sesión Única por Partida
+Tabla: `jugadores`
+Columna: `usuario_id, partida_id`
+Nombre del índice: `unica_relacion_sesion`
+Código SQL:
+```sql
+CREATE UNIQUE INDEX unica_relacion_sesion ON public.jugadores USING btree (usuario_id, partida_id);
+```
