@@ -138,3 +138,11 @@ Código SQL:
 CREATE UNIQUE INDEX habilidades_pkey ON public.habilidades USING btree (habilidad_id);
 ```
 
+# 16. Prerrequisitos de Habilidades (Compuesta)
+Tabla: `habilidad_prerrequisitos`
+Columna: `habilidad_id, habilidad_requerida_id`
+Nombre del índice: `habilidad_prerrequisitos_pkey`
+Código SQL:
+```sql
+CREATE UNIQUE INDEX habilidad_prerrequisitos_pkey ON public.habilidad_prerrequisitos USING btree (habilidad_id, habilidad_requerida_id);
+```
