@@ -63,3 +63,45 @@ Respuesta:
   }
 ]
 ```
+
+# 3. Continentes
+
+Método: `GET`
+Endpoint: `https://ivwglvdocjgwinzrqooc.supabase.co/rest/v1/continentes`
+
+Respuesta:
+```JSON
+[
+  {
+    "continente_id": 1,
+    "mapa_id": 1,
+    "nombre_continente": "América del Norte y Central"
+  },
+  {
+    "continente_id": 2,
+    "mapa_id": 1,
+    "nombre_continente": "América del Sur"
+  },
+  {
+    "continente_id": 3,
+    "mapa_id": 1,
+    "nombre_continente": "Europa"
+  },
+  {
+    "continente_id": 4,
+    "mapa_id": 1,
+    "nombre_continente": "Asia"
+  },
+  {
+    "continente_id": 5,
+    "mapa_id": 1,
+    "nombre_continente": "África"
+  },
+  {
+    "continente_id": 6,
+    "mapa_id": 1,
+    "nombre_continente": "Oceanía"
+  }
+]
+
+```
