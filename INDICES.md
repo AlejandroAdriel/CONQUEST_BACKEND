@@ -29,3 +29,12 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX usuarios_username_key ON public.usuarios USING btree (username);
 ```
+
+# 4. Clave Primaria de Jugadores
+Tabla: `jugadores`
+Columna: `jugador_id`
+Nombre del índice: `jugadores_pkey`
+Código SQL:
+```sql
+CREATE UNIQUE INDEX jugadores_pkey ON public.jugadores USING btree (jugador_id);
+```
