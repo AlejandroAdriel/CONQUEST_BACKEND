@@ -83,3 +83,12 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX tropas_nombre_tropa_key ON public.tropas USING btree (nombre_tropa);
 ```
+
+# 10. Clave Primaria de Infanterías
+Tabla: `infanterías`
+Columna: `tropa_id`
+Nombre del índice: `infanterias_pkey`
+Código SQL:
+```sql
+CREATE UNIQUE INDEX infanterias_pkey ON public.infanterias USING btree (tropa_id);
+```
