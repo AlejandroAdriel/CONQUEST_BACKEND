@@ -8,4 +8,6 @@ Tabla: `usuarios`
 Columna: `usuario_id`
 Nombre del índice: `usuarios_pkey`
 Código SQL:
-CREATE UNIQUE INDEX usuarios_pkey ON public.usuarios USING btree (usuario_id);
+```sql
+`CREATE UNIQUE INDEX usuarios_pkey ON public.usuarios USING btree (usuario_id)`
+```
