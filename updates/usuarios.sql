@@ -1,3 +1,4 @@
+-- 2026-06-01: Se corrige tabla usuarios
 ALTER TABLE usuarios
 RENAME COLUMN contrasena TO password_hash;
 
