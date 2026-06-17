@@ -33,3 +33,33 @@ Respuesta:
   }
 ]
 ```
+# 2. Caballerias
+
+Método: `GET`
+Endpoint: `https://ivwglvdocjgwinzrqooc.supabase.co/rest/v1/caballerias`
+
+Respuesta:
+```JSON
+[
+  {
+    "tropa_id": 3,
+    "bono_ataque_flanqueo": 2.5
+  },
+  {
+    "tropa_id": 4,
+    "bono_ataque_flanqueo": 3.5
+  },
+  {
+    "tropa_id": 10,
+    "bono_ataque_flanqueo": 2.0
+  },
+  {
+    "tropa_id": 11,
+    "bono_ataque_flanqueo": 4.0
+  },
+  {
+    "tropa_id": 12,
+    "bono_ataque_flanqueo": 1.8
+  }
+]
+```
