@@ -51,3 +51,94 @@ BEGIN
     RETURN v_resultado;
 END;
 $$;
+
+
+CREATE OR REPLACE FUNCTION comprar_habilidad(
+    p_jugador_id    INT,
+    p_partida_id    INT,
+    p_habilidad_id  VARCHAR(50),
+    p_costo_oro     INT            -- Costo en oro (igual que presupuesto del frontend)
+)
+RETURNS JSONB
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+DECLARE
+    v_oro_actual  INT;
+    v_pertenece   BOOLEAN;
+    v_ya_desbloq  BOOLEAN;
+    v_prereq      RECORD;
+    v_resultado   JSONB;
+BEGIN
+    -- 1. Verificar que el jugador pertenece a la partida
+    SELECT EXISTS(
+        SELECT 1 FROM jugadores
+        WHERE jugador_id = p_jugador_id
+          AND partida_id = p_partida_id
+    ) INTO v_pertenece;
+
+    IF NOT v_pertenece THEN
+        RAISE EXCEPTION 'ACCESO_DENEGADO: jugador_id=% no pertenece a partida_id=%',
+            p_jugador_id, p_partida_id;
+    END IF;
+
+    -- 2. Verificar que la habilidad no esté ya desbloqueada
+    SELECT EXISTS(
+        SELECT 1 FROM partida_habilidades
+        WHERE partida_id   = p_partida_id
+          AND habilidad_id = p_habilidad_id
+    ) INTO v_ya_desbloq;
+
+    IF v_ya_desbloq THEN
+        RAISE EXCEPTION 'YA_DESBLOQUEADA: habilidad_id=% ya está activa en partida_id=%',
+            p_habilidad_id, p_partida_id;
+    END IF;
+
+    -- 3. Validar cadena completa de prerrequisitos
+    FOR v_prereq IN
+        SELECT habilidad_requerida_id
+        FROM   habilidad_prerrequisitos
+        WHERE  habilidad_id = p_habilidad_id
+    LOOP
+        IF NOT EXISTS (
+            SELECT 1 FROM partida_habilidades
+            WHERE partida_id   = p_partida_id
+              AND habilidad_id = v_prereq.habilidad_requerida_id
+        ) THEN
+            RAISE EXCEPTION 'PREREQUISITO_FALTANTE: se requiere habilidad_id=% antes de desbloquear %',
+                v_prereq.habilidad_requerida_id, p_habilidad_id;
+        END IF;
+    END LOOP;
+
+    -- 4. Verificar y bloquear el oro del jugador
+    SELECT oro INTO v_oro_actual
+    FROM   jugadores
+    WHERE  jugador_id = p_jugador_id
+    FOR UPDATE;
+
+    IF v_oro_actual < p_costo_oro THEN
+        RAISE EXCEPTION 'ORO_INSUFICIENTE: tiene=%, necesita=%', v_oro_actual, p_costo_oro;
+    END IF;
+
+    -- 5. Descontar oro e insertar desbloqueo (atómico)
+    UPDATE jugadores
+    SET oro = oro - p_costo_oro
+    WHERE jugador_id = p_jugador_id;
+
+    INSERT INTO partida_habilidades (partida_id, habilidad_id, fecha_desbloqueo)
+    VALUES (p_partida_id, p_habilidad_id, CURRENT_TIMESTAMP);
+
+    -- 6. Retornar estado
+    SELECT jsonb_build_object(
+        'jugador_id',   p_jugador_id,
+        'partida_id',   p_partida_id,
+        'habilidad_id', p_habilidad_id,
+        'oro_restante', oro
+    )
+    INTO v_resultado
+    FROM jugadores WHERE jugador_id = p_jugador_id;
+
+    RETURN v_resultado;
+END;
+$$;
