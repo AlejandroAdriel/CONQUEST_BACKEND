@@ -30,13 +30,15 @@ CREATE TABLE
 CREATE TABLE
     jugadores (
         jugador_id SERIAL PRIMARY KEY,
-        usuario_id INT NOT NULL,
-        partida_id INT NOT NULL,
-        habilidad_puntos INT NOT NULL DEFAULT 0,
-        oro INT NOT NULL DEFAULT 5000,
-        FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id),
-        FOREIGN KEY (partida_id) REFERENCES partidas (partida_id),
-        UNIQUE (usuario_id, partida_id)
+        usuario_id INT NOT NULL REFERENCES usuarios (usuario_id) ON DELETE CASCADE,
+        partida_id INT NOT NULL REFERENCES partidas (partida_id) ON DELETE CASCADE,
+        hq_pais_id VARCHAR(100) NOT NULL,
+        oro INT NOT NULL,
+        habilidad_puntos INT DEFAULT 0 NOT NULL,
+        tropas_infanteria INT DEFAULT 5000 NOT NULL,
+        tropas_caballeria INT DEFAULT 2000 NOT NULL,
+        tropas_artilleria INT DEFAULT 500 NOT NULL,
+        CONSTRAINT unica_relacion_sesion UNIQUE (usuario_id, partida_id)
     );
 
 CREATE TABLE
