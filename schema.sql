@@ -119,6 +119,7 @@ CREATE TABLE
         eje_x INT NOT NULL,
         eje_y INT NOT NULL
     );
+
 CREATE TABLE
     habilidad_prerrequisitos (
         habilidad_id VARCHAR(50) REFERENCES habilidades (habilidad_id) ON DELETE CASCADE,
@@ -136,14 +137,12 @@ CREATE TABLE
             PRIMARY KEY (partida_id, habilidad_id)
     );
 
-CREATE TABLE
-    tropas (
-        tropa_id SERIAL PRIMARY KEY,
-        nombre_tropa VARCHAR(50) NOT NULL,
-        costo INT NOT NULL,
-        ataque INT NOT NULL,
-        defensa INT NOT NULL
-    );
+CREATE TABLE tropas (
+    tropa_id SERIAL PRIMARY KEY,
+    nombre_tropa VARCHAR(50) NOT NULL UNIQUE,
+    costo_base INT NOT NULL CHECK (costo_base > 0),
+    multiplicador_combate NUMERIC(3,1) NOT NULL CHECK (multiplicador_combate >= 0.0)
+);
 
 CREATE TABLE infanterias (
     tropa_id INT PRIMARY KEY REFERENCES tropas(tropa_id) ON DELETE CASCADE,
