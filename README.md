@@ -52,7 +52,7 @@ La base de datos está diseñada con un enfoque relacional híbrido. Se utiliza 
 ## Interfaz Frontend
 
 Para interactuar con esta base de datos a través de la interfaz de mando holográfica CRT, consulta el código del frontend en:
-[CONQUEST_FRONTEND (React + Vite + Tailwind)](file:///d:/CONQUEST/CONQUEST_FRONTEND/README.md)
+[CONQUEST_FRONTEND (React + Vite + Tailwind)](https://github.com/AlejandroAdriel/CONQUEST_FRONTEND)
 
 ---
 
