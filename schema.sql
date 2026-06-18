@@ -40,16 +40,6 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    ejercitos_jugador (
-        ejercito_id SERIAL PRIMARY KEY,
-        jugador_id INT NOT NULL,
-        infanteria INT NOT NULL DEFAULT 0,
-        caballeria INT NOT NULL DEFAULT 0,
-        artilleria INT NOT NULL DEFAULT 0,
-        FOREIGN KEY (jugador_id) REFERENCES jugadores (jugador_id)
-    );
-
-CREATE TABLE
     mapas (
         mapa_id SERIAL PRIMARY KEY,
         nombre_mapa VARCHAR(100) NOT NULL,
