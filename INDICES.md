@@ -12,7 +12,7 @@ Código SQL:
 CREATE UNIQUE INDEX usuarios_pkey ON public.usuarios USING btree (usuario_id)
 ```
 
-# 2. Correo Único de Usuarios
+# 2. Correo Único de Usuarios - Más rersultado de tiempos
 Tabla: `usuarios`
 Columna: `correo`
 Nombre del índice: `usuarios_correo_key`
@@ -20,6 +20,16 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX usuarios_correo_key ON public.usuarios USING btree (correo);
 ```
+Seq Scan on usuarios  `(cost=0.00..10.50 rows=1 width=1616) (actual time=0.097..0.098 rows=1 loops=1)`
+  Filter: ((correo)::text = 'admin@admin.com'::text)
+  Rows Removed by Filter: 5
+Planning Time: `0.433 ms`
+Execution Time: `0.163 ms`
+
+Index Scan using usuarios_correo_key on usuarios  `(cost=0.14..2.36 rows=1 width=1616) (actual time=0.035..0.035 rows=1 loops=1)`
+  Index Cond: ((correo)::text = 'admin@admin.com'::text)
+Planning Time: `1.165 ms`
+Execution Time: `0.119 ms`
 
 # 3. Username Único de Usuarios
 Tabla: `usuarios`
