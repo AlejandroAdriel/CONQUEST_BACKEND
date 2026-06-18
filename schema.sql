@@ -52,6 +52,7 @@ CREATE TABLE
 CREATE TABLE
     mapas (
         mapa_id SERIAL PRIMARY KEY,
+        nombre_mapa VARCHAR(100) NOT NULL,
         nro_continentes INT NOT NULL,
         nro_paises INT NOT NULL
     );

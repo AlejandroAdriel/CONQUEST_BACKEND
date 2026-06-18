@@ -1,0 +1,2 @@
+ALTER TABLE mapas
+ADD COLUMN nombre_mapa VARCHAR(100) NOT NULL; 
