@@ -177,3 +177,66 @@ BEGIN
     );
 END;
 $$;
+
+
+CREATE OR REPLACE FUNCTION guardar_estado_partida(
+    p_partida_id         INT,
+    p_jugador_id         INT,
+    p_oro                INT,
+    p_tropas_infanteria  INT,
+    p_tropas_caballeria  INT,
+    p_tropas_artilleria  INT,
+    p_habilidad_puntos   INT,
+    p_dias_campana       INT,
+    p_porcentaje_dominio NUMERIC(5,2),
+    p_velocidad          INT     DEFAULT 1,
+    p_pausado            BOOLEAN DEFAULT FALSE
+)
+RETURNS JSONB
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+DECLARE
+    v_pertenece BOOLEAN;
+    v_ts        TIMESTAMPTZ := CURRENT_TIMESTAMP;
+BEGIN
+    SELECT EXISTS(
+        SELECT 1 FROM jugadores
+        WHERE jugador_id = p_jugador_id
+          AND partida_id = p_partida_id
+    ) INTO v_pertenece;
+
+    IF NOT v_pertenece THEN
+        RAISE EXCEPTION 'ACCESO_DENEGADO: jugador_id=% no pertenece a partida_id=%',
+            p_jugador_id, p_partida_id;
+    END IF;
+
+    UPDATE jugadores
+    SET oro               = p_oro,
+        tropas_infanteria = p_tropas_infanteria,
+        tropas_caballeria = p_tropas_caballeria,
+        tropas_artilleria = p_tropas_artilleria,
+        habilidad_puntos  = p_habilidad_puntos
+    WHERE jugador_id = p_jugador_id;
+
+    UPDATE partidas
+    SET dias_campana        = p_dias_campana,
+        porcentaje_dominio  = p_porcentaje_dominio,
+        ultima_vez_guardado = v_ts
+    WHERE partida_id = p_partida_id;
+
+    UPDATE tiempos
+    SET dias_campana = p_dias_campana,
+        velocidad    = p_velocidad,
+        pausado      = p_pausado
+    WHERE partida_id = p_partida_id;
+
+    RETURN jsonb_build_object(
+        'success',    true,
+        'partida_id', p_partida_id,
+        'jugador_id', p_jugador_id,
+        'guardado_en', v_ts
+    );
+END;
+$$;
