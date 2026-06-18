@@ -142,3 +142,38 @@ BEGIN
     RETURN v_resultado;
 END;
 $$;
+
+
+
+CREATE OR REPLACE FUNCTION avanzar_dia_campana(
+    p_partida_id INT
+)
+RETURNS JSONB
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+DECLARE
+    v_dias_nuevo INT;
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM partidas WHERE partida_id = p_partida_id) THEN
+        RAISE EXCEPTION 'PARTIDA_NO_ENCONTRADA: partida_id=%', p_partida_id;
+    END IF;
+
+    UPDATE tiempos
+    SET dias_campana = dias_campana + 1
+    WHERE partida_id = p_partida_id;
+
+    UPDATE partidas
+    SET dias_campana        = dias_campana + 1,
+        ultima_vez_guardado = CURRENT_TIMESTAMP
+    WHERE partida_id = p_partida_id
+    RETURNING dias_campana INTO v_dias_nuevo;
+
+    RETURN jsonb_build_object(
+        'partida_id',   p_partida_id,
+        'dias_campana', v_dias_nuevo,
+        'timestamp',    CURRENT_TIMESTAMP
+    );
+END;
+$$;
