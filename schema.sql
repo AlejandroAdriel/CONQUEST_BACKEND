@@ -133,12 +133,3 @@ CREATE TABLE
     tropa_id INT PRIMARY KEY REFERENCES tropas(tropa_id) ON DELETE CASCADE,
     bono_perforacion_plasma NUMERIC(3,1) DEFAULT 0.0 NOT NULL CHECK (bono_perforacion_plasma >= 0.0)
 );
-
-CREATE TABLE
-    eventos_tiempo (
-        evento_id INT,
-        tiempo_id INT,
-        PRIMARY KEY (evento_id, tiempo_id),
-        FOREIGN KEY (evento_id) REFERENCES eventos (evento_id),
-        FOREIGN KEY (tiempo_id) REFERENCES tiempos (tiempo_id)
-    );
