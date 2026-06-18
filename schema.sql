@@ -102,25 +102,6 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    habilidades (
-        habilidad_id VARCHAR(20) PRIMARY KEY,
-        nombre VARCHAR(100) NOT NULL,
-        descripcion TEXT NOT NULL,
-        costo INT NOT NULL,
-        categoria VARCHAR(50) NOT NULL,
-        rama VARCHAR(50) NOT NULL,
-        eje_x INT NOT NULL,
-        eje_y INT NOT NULL
-    );
-
-CREATE TABLE
-    habilidad_prerrequisitos (
-        habilidad_id VARCHAR(50) REFERENCES habilidades (habilidad_id) ON DELETE CASCADE,
-        habilidad_requerida_id VARCHAR(50) REFERENCES habilidades (habilidad_id) ON DELETE CASCADE,
-        PRIMARY KEY (habilidad_id, habilidad_requerida_id)
-    );
-
-CREATE TABLE
     partida_habilidades (
         partida_id INT NOT NULL,
         habilidad_id VARCHAR(50) REFERENCES habilidades (habilidad_id) ON DELETE CASCADE,
