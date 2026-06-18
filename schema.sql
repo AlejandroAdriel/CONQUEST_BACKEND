@@ -66,6 +66,23 @@ CREATE TABLE
     );
 
 CREATE TABLE
+    paises_base (
+        pais_id VARCHAR(100) PRIMARY KEY,
+        nombre_es VARCHAR(100) NOT NULL,
+        continente_id INT NOT NULL REFERENCES continentes (continente_id) ON DELETE CASCADE,
+        poblacion_real_tierra BIGINT NOT NULL,
+        gdp_per_capita_base INT DEFAULT 5000 NOT NULL,
+        ejercito_multiplicador NUMERIC(4, 2) DEFAULT 1.00 NOT NULL,
+        pct_composicion_infanteria NUMERIC(4, 3) DEFAULT 0.700 NOT NULL,
+        pct_composicion_caballeria NUMERIC(4, 3) DEFAULT 0.200 NOT NULL,
+        pct_composicion_artilleria NUMERIC(4, 3) DEFAULT 0.100 NOT NULL,
+        tasa_natalidad_diaria NUMERIC(10, 6) NOT NULL,
+        tasa_mortalidad_diaria NUMERIC(10, 6) NOT NULL,
+        multiplicador_reclutamiento NUMERIC(4, 2) DEFAULT 1.00 NOT NULL,
+        multiplicador_pesadas NUMERIC(4, 2) DEFAULT 1.00 NOT NULL
+    );
+
+CREATE TABLE
     arbol_habilidades (
         arbol_id SERIAL PRIMARY KEY,
         tipo INT NOT NULL,
@@ -148,21 +165,4 @@ CREATE TABLE
         PRIMARY KEY (evento_id, tiempo_id),
         FOREIGN KEY (evento_id) REFERENCES eventos (evento_id),
         FOREIGN KEY (tiempo_id) REFERENCES tiempos (tiempo_id)
-    );
-
-CREATE TABLE
-    paises_base (
-        pais_id VARCHAR(100) PRIMARY KEY,
-        nombre_es VARCHAR(100) NOT NULL,
-        continente_id INT NOT NULL REFERENCES continentes (continente_id) ON DELETE CASCADE,
-        poblacion_real_tierra BIGINT NOT NULL,
-        gdp_per_capita_base INT DEFAULT 5000 NOT NULL,
-        ejercito_multiplicador NUMERIC(4, 2) DEFAULT 1.00 NOT NULL,
-        pct_composicion_infanteria NUMERIC(4, 3) DEFAULT 0.700 NOT NULL,
-        pct_composicion_caballeria NUMERIC(4, 3) DEFAULT 0.200 NOT NULL,
-        pct_composicion_artilleria NUMERIC(4, 3) DEFAULT 0.100 NOT NULL,
-        tasa_natalidad_diaria NUMERIC(10, 6) NOT NULL,
-        tasa_mortalidad_diaria NUMERIC(10, 6) NOT NULL,
-        multiplicador_reclutamiento NUMERIC(4, 2) DEFAULT 1.00 NOT NULL,
-        multiplicador_pesadas NUMERIC(4, 2) DEFAULT 1.00 NOT NULL
     );
