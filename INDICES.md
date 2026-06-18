@@ -155,3 +155,42 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX partida_habilidades_pkey ON public.partida_habilidades USING btree (partida_id, habilidad_id);
 ```
+
+# 18. Clave Primaria de Mapas
+Tabla: `mapas`
+Columna: `mapa_id`
+Nombre del índice: `mapas_pkey`
+Código SQL:
+
+SQL
+CREATE UNIQUE INDEX mapas_pkey ON public.mapas USING btree (mapa_id);
+
+# 19. Clave Primaria de Continentes
+Tabla: `continentes`
+Columna: `continente_id`
+Nombre del índice: `continentes_pkey`
+
+Código SQL:
+```sql
+CREATE UNIQUE INDEX continentes_pkey ON public.continentes USING btree (continente_id);
+```
+
+# 20. Clave Primaria de Países Base
+Tabla: `paises_base`
+Columna: `pais_id`
+Nombre del índice: `paises_base_pkey`
+
+Código SQL:
+```sql
+CREATE UNIQUE INDEX paises_base_pkey ON public.paises_base USING btree (pais_id);
+```
+
+# 21. Clave Primaria de Tiempos
+Tabla: `tiempos`
+Columna: `tiempo_id`
+Nombre del índice: `tiempos_pkey`
+
+Código SQL:
+```sql
+CREATE UNIQUE INDEX tiempos_pkey ON public.tiempos USING btree (tiempo_id);
+```
