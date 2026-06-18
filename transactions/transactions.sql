@@ -290,3 +290,10 @@ BEGIN
     );
 END;
 $$;
+
+
+GRANT EXECUTE ON FUNCTION reclutar_tropas(INT, INT, INT, INT, INT)          TO authenticated;
+GRANT EXECUTE ON FUNCTION comprar_habilidad(INT, INT, VARCHAR, INT)          TO authenticated;
+GRANT EXECUTE ON FUNCTION avanzar_dia_campana(INT)                           TO authenticated;
+GRANT EXECUTE ON FUNCTION guardar_estado_partida(INT,INT,INT,INT,INT,INT,INT,INT,NUMERIC,INT,BOOLEAN) TO authenticated;
+GRANT EXECUTE ON FUNCTION inicializar_nueva_partida(INT,VARCHAR,VARCHAR,INT,INT,INT,INT,INT) TO authenticated;
