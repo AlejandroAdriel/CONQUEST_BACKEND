@@ -135,15 +135,6 @@ CREATE TABLE
 );
 
 CREATE TABLE
-    eventos (
-        evento_id SERIAL PRIMARY KEY,
-        titulo VARCHAR(100) NOT NULL,
-        descripcion TEXT NOT NULL,
-        bonificacion INT NOT NULL,
-        tipo VARCHAR(20)
-    );
-
-CREATE TABLE
     eventos_tiempo (
         evento_id INT,
         tiempo_id INT,
