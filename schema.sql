@@ -102,13 +102,6 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    arbol_habilidades (
-        arbol_id SERIAL PRIMARY KEY,
-        tipo INT NOT NULL,
-        nro_habilidades INT NOT NULL
-    );
-
-CREATE TABLE
     habilidades (
         habilidad_id VARCHAR(20) PRIMARY KEY,
         nombre VARCHAR(100) NOT NULL,
