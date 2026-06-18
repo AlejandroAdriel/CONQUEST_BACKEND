@@ -66,18 +66,6 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    paises (
-        pais_id SERIAL PRIMARY KEY,
-        codigo_iso VARCHAR(3) NOT NULL,
-        nombre VARCHAR(100) NOT NULL,
-        ejercito INT NOT NULL,
-        poblacion BIGINT NOT NULL,
-        economia INT NOT NULL,
-        continente_id INT NOT NULL,
-        FOREIGN KEY (continente_id) REFERENCES continentes (continente_id)
-    );
-
-CREATE TABLE
     partida_paises (
         partida_pais_id SERIAL PRIMARY KEY,
         partida_id INT NOT NULL,
