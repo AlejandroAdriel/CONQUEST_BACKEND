@@ -107,6 +107,12 @@ CREATE TABLE
         eje_x INT NOT NULL,
         eje_y INT NOT NULL
     );
+CREATE TABLE
+    habilidad_prerrequisitos (
+        habilidad_id VARCHAR(50) REFERENCES habilidades (habilidad_id) ON DELETE CASCADE,
+        habilidad_requerida_id VARCHAR(50) REFERENCES habilidades (habilidad_id) ON DELETE CASCADE,
+        PRIMARY KEY (habilidad_id, habilidad_requerida_id)
+    );
 
 CREATE TABLE
     partida_habilidades (
