@@ -133,13 +133,6 @@ CREATE TABLE
     tropa_id INT PRIMARY KEY REFERENCES tropas(tropa_id) ON DELETE CASCADE,
     bono_perforacion_plasma NUMERIC(3,1) DEFAULT 0.0 NOT NULL CHECK (bono_perforacion_plasma >= 0.0)
 );
-CREATE TABLE
-    tiempos (
-        tiempo_id SERIAL PRIMARY KEY,
-        fecha_partida TIMESTAMP NOT NULL,
-        velocidad INT NOT NULL DEFAULT 1,
-        pausado BOOLEAN NOT NULL DEFAULT FALSE
-    );
 
 CREATE TABLE
     eventos (
