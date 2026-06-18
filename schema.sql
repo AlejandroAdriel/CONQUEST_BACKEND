@@ -66,18 +66,6 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    partida_paises (
-        partida_pais_id SERIAL PRIMARY KEY,
-        partida_id INT NOT NULL,
-        pais_id INT NOT NULL,
-        conquistado BOOLEAN NOT NULL DEFAULT FALSE,
-        color_tactico VARCHAR(10) DEFAULT '#1e293b',
-        FOREIGN KEY (partida_id) REFERENCES partidas (partida_id),
-        FOREIGN KEY (pais_id) REFERENCES paises (pais_id),
-        UNIQUE (partida_id, pais_id)
-    );
-
-CREATE TABLE
     arbol_habilidades (
         arbol_id SERIAL PRIMARY KEY,
         tipo INT NOT NULL,
