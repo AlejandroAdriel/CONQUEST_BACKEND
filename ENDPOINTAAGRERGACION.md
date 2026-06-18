@@ -104,3 +104,80 @@ Respuesta:
   }
 ]
 ```
+
+# 3. Resumen de Habilidades por Rama
+
+Método: `GET`
+Endpoint: `https://ivwglvdocjgwinzrqooc.supabase.co/rest/v1/reporte_habilidades_por_rama`
+
+Codigo:
+```sql
+CREATE OR REPLACE VIEW reporte_habilidades_por_rama AS
+SELECT 
+    rama,
+    COUNT(habilidad_id) AS cantidad_habilidades,
+    SUM(costo) AS costo_total_para_completar,
+    AVG(costo) AS costo_promedio
+FROM 
+    habilidades
+GROUP BY 
+    rama
+HAVING 
+    COUNT(habilidad_id) >= 2
+ORDER BY 
+    costo_total_para_completar DESC;
+```
+
+Respuesta:
+```JSON
+[
+  {
+    "rama": "Definitiva",
+    "cantidad_habilidades": 2,
+    "costo_total_para_completar": 1150000,
+    "costo_promedio": 575000.000000000000
+  },
+  {
+    "rama": "Prototipos",
+    "cantidad_habilidades": 2,
+    "costo_total_para_completar": 600000,
+    "costo_promedio": 300000.000000000000
+  },
+  {
+    "rama": "Orbital",
+    "cantidad_habilidades": 4,
+    "costo_total_para_completar": 480000,
+    "costo_promedio": 120000.000000000000
+  },
+  {
+    "rama": "Convergencia",
+    "cantidad_habilidades": 7,
+    "costo_total_para_completar": 425000,
+    "costo_promedio": 60714.285714285714
+  },
+  {
+    "rama": "SuperNodos",
+    "cantidad_habilidades": 2,
+    "costo_total_para_completar": 360000,
+    "costo_promedio": 180000.000000000000
+  },
+  {
+    "rama": "Expansion",
+    "cantidad_habilidades": 11,
+    "costo_total_para_completar": 258000,
+    "costo_promedio": 23454.545454545455
+  },
+  {
+    "rama": "Bifurcacion",
+    "cantidad_habilidades": 7,
+    "costo_total_para_completar": 56000,
+    "costo_promedio": 8000.0000000000000000
+  },
+  {
+    "rama": "Origen",
+    "cantidad_habilidades": 2,
+    "costo_total_para_completar": 3000,
+    "costo_promedio": 1500.0000000000000000
+  }
+]
+```
