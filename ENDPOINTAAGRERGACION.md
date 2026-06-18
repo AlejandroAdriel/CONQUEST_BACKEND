@@ -52,4 +52,55 @@ Respuesta:
   }
 ]
 ```
-# 2. Caballerias
+# 2. Tamaño de Ejércitos por Partida
+
+Método: `GET`
+Endpoint: `https://ivwglvdocjgwinzrqooc.supabase.co/rest/v1/reporte_ejercitos_por_partida`
+
+Codigo:
+```sql
+CREATE OR REPLACE VIEW reporte_ejercitos_por_partida AS
+SELECT 
+    partida_id,
+    COUNT(jugador_id) AS total_jugadores,
+    SUM(tropas_infanteria + tropas_caballeria + tropas_artilleria) AS gran_total_tropas
+FROM 
+    jugadores
+GROUP BY 
+    partida_id
+HAVING 
+    COUNT(jugador_id) > 0
+ORDER BY 
+    gran_total_tropas DESC;
+```
+
+Respuesta:
+```JSON
+[
+  {
+    "partida_id": 5,
+    "total_jugadores": 1,
+    "gran_total_tropas": 13663
+  },
+  {
+    "partida_id": 7,
+    "total_jugadores": 1,
+    "gran_total_tropas": 8680
+  },
+  {
+    "partida_id": 4,
+    "total_jugadores": 1,
+    "gran_total_tropas": 4711
+  },
+  {
+    "partida_id": 6,
+    "total_jugadores": 1,
+    "gran_total_tropas": 3600
+  },
+  {
+    "partida_id": 2,
+    "total_jugadores": 1,
+    "gran_total_tropas": 3600
+  }
+]
+```
