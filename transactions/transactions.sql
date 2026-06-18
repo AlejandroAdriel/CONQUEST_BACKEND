@@ -14,7 +14,6 @@ DECLARE
     v_oro_actual  INT;
     v_resultado   JSONB;
 BEGIN
-    -- Bloquear fila para evitar race conditions
     SELECT oro INTO v_oro_actual
     FROM   jugadores
     WHERE  jugador_id = p_jugador_id
@@ -32,7 +31,6 @@ BEGIN
         RAISE EXCEPTION 'ORO_INSUFICIENTE: tiene=%, necesita=%', v_oro_actual, p_costo_oro;
     END IF;
 
-    -- Operación atómica: descontar oro y sumar tropas
     UPDATE jugadores
     SET
         oro               = oro - p_costo_oro,
@@ -57,7 +55,6 @@ CREATE OR REPLACE FUNCTION comprar_habilidad(
     p_jugador_id    INT,
     p_partida_id    INT,
     p_habilidad_id  VARCHAR(50),
-    p_costo_oro     INT            -- Costo en oro (igual que presupuesto del frontend)
 )
 RETURNS JSONB
 LANGUAGE plpgsql
@@ -71,7 +68,6 @@ DECLARE
     v_prereq      RECORD;
     v_resultado   JSONB;
 BEGIN
-    -- 1. Verificar que el jugador pertenece a la partida
     SELECT EXISTS(
         SELECT 1 FROM jugadores
         WHERE jugador_id = p_jugador_id
@@ -83,7 +79,6 @@ BEGIN
             p_jugador_id, p_partida_id;
     END IF;
 
-    -- 2. Verificar que la habilidad no esté ya desbloqueada
     SELECT EXISTS(
         SELECT 1 FROM partida_habilidades
         WHERE partida_id   = p_partida_id
@@ -95,7 +90,6 @@ BEGIN
             p_habilidad_id, p_partida_id;
     END IF;
 
-    -- 3. Validar cadena completa de prerrequisitos
     FOR v_prereq IN
         SELECT habilidad_requerida_id
         FROM   habilidad_prerrequisitos
@@ -111,7 +105,6 @@ BEGIN
         END IF;
     END LOOP;
 
-    -- 4. Verificar y bloquear el oro del jugador
     SELECT oro INTO v_oro_actual
     FROM   jugadores
     WHERE  jugador_id = p_jugador_id
@@ -121,7 +114,6 @@ BEGIN
         RAISE EXCEPTION 'ORO_INSUFICIENTE: tiene=%, necesita=%', v_oro_actual, p_costo_oro;
     END IF;
 
-    -- 5. Descontar oro e insertar desbloqueo (atómico)
     UPDATE jugadores
     SET oro = oro - p_costo_oro
     WHERE jugador_id = p_jugador_id;
@@ -129,7 +121,6 @@ BEGIN
     INSERT INTO partida_habilidades (partida_id, habilidad_id, fecha_desbloqueo)
     VALUES (p_partida_id, p_habilidad_id, CURRENT_TIMESTAMP);
 
-    -- 6. Retornar estado
     SELECT jsonb_build_object(
         'jugador_id',   p_jugador_id,
         'partida_id',   p_partida_id,
