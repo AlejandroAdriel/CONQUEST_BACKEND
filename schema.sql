@@ -95,6 +95,13 @@ CREATE TABLE
     );
 
 CREATE TABLE
+    habilidad_prerrequisitos (
+        habilidad_id VARCHAR(50) REFERENCES habilidades (habilidad_id) ON DELETE CASCADE,
+        habilidad_requerida_id VARCHAR(50) REFERENCES habilidades (habilidad_id) ON DELETE CASCADE,
+        PRIMARY KEY (habilidad_id, habilidad_requerida_id)
+    );
+
+CREATE TABLE
     arbol_habilidades (
         arbol_id SERIAL PRIMARY KEY,
         tipo INT NOT NULL,
