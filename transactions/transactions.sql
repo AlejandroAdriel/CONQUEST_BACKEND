@@ -240,3 +240,62 @@ BEGIN
     );
 END;
 $$;
+
+CREATE OR REPLACE FUNCTION inicializar_nueva_partida(
+    p_usuario_id         INT,
+    p_commander_id       VARCHAR(100),
+    p_hq_pais_id         VARCHAR(100),
+    p_oro                INT DEFAULT 5000,
+    p_tropas_infanteria  INT DEFAULT 5000,
+    p_tropas_caballeria  INT DEFAULT 2000,
+    p_tropas_artilleria  INT DEFAULT 500,
+    p_velocidad          INT DEFAULT 1
+)
+RETURNS JSONB
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+DECLARE
+    v_partida_id INT;
+    v_jugador_id INT;
+    v_ts         TIMESTAMPTZ := CURRENT_TIMESTAMP;
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM usuarios WHERE usuario_id = p_usuario_id) THEN
+        RAISE EXCEPTION 'USUARIO_NO_ENCONTRADO: usuario_id=%', p_usuario_id;
+    END IF;
+
+    INSERT INTO partidas (
+        commander_id, estado_activo, dias_campana,
+        porcentaje_dominio, fecha_creacion, ultima_vez_guardado
+    )
+    VALUES (p_commander_id, TRUE, 1, 0.00, v_ts, v_ts)
+    RETURNING partida_id INTO v_partida_id;
+
+    INSERT INTO jugadores (
+        usuario_id, partida_id, hq_pais_id, oro, habilidad_puntos,
+        tropas_infanteria, tropas_caballeria, tropas_artilleria
+    )
+    VALUES (
+        p_usuario_id, v_partida_id, p_hq_pais_id, p_oro, 0,
+        p_tropas_infanteria, p_tropas_caballeria, p_tropas_artilleria
+    )
+    RETURNING jugador_id INTO v_jugador_id;
+
+    INSERT INTO tiempos (partida_id, dias_campana, velocidad, pausado)
+    VALUES (v_partida_id, 1, p_velocidad, FALSE);
+
+    RETURN jsonb_build_object(
+        'partida_id',        v_partida_id,
+        'jugador_id',        v_jugador_id,
+        'commander_id',      p_commander_id,
+        'hq_pais_id',        p_hq_pais_id,
+        'oro',               p_oro,
+        'tropas_infanteria', p_tropas_infanteria,
+        'tropas_caballeria', p_tropas_caballeria,
+        'tropas_artilleria', p_tropas_artilleria,
+        'velocidad',         p_velocidad,
+        'fecha_creacion',    v_ts
+    );
+END;
+$$;
