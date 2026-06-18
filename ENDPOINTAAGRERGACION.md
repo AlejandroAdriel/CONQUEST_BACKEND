@@ -181,3 +181,39 @@ Respuesta:
   }
 ]
 ```
+
+# 4. Países HQ Más Populares
+
+Método: `GET`
+Endpoint: `https://ivwglvdocjgwinzrqooc.supabase.co/rest/v1/reporte_paises_hq_populares`
+
+Codigo:
+```sql
+CREATE OR REPLACE VIEW reporte_paises_hq_populares AS
+SELECT 
+    hq_pais_id AS pais_base,
+    COUNT(jugador_id) AS veces_elegido,
+    SUM(oro) AS oro_total_acumulado
+FROM 
+    jugadores
+GROUP BY 
+    hq_pais_id
+ORDER BY 
+    veces_elegido DESC;
+```
+
+Respuesta:
+```JSON
+[
+  {
+    "pais_base": "Albania",
+    "veces_elegido": 4,
+    "oro_total_acumulado": 10000
+  },
+  {
+    "pais_base": "Peru",
+    "veces_elegido": 1,
+    "oro_total_acumulado": 146
+  }
+]
+```
