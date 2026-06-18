@@ -1,5 +1,13 @@
 # Registro de Índices - Supabase
 Este archivo contiene la especificación detallada de cada índice de la base de datos la cual esta subida en Supabase, organizado por tabla, columna y su respectiva sentencia SQL.
+---
+# Medicion del tiempo antes de los indices
+
+Seq Scan on usuarios  `(cost=0.00..10.50 rows=1 width=1616) (actual time=0.097..0.098 rows=1 loops=1)`
+  Filter: ((correo)::text = 'admin@admin.com'::text)
+  Rows Removed by Filter: 5
+Planning Time: `0.433 ms`
+Execution Time: `0.163 ms`
 
 ---
 
@@ -12,6 +20,15 @@ Código SQL:
 CREATE UNIQUE INDEX usuarios_pkey ON public.usuarios USING btree (usuario_id)
 ```
 
+```sql
+EXPLAIN ANALYZE SELECT * FROM usuarios WHERE usuario_id = 1;
+```
+
+Index Scan using usuarios_pkey on usuarios  `(cost=0.14..2.36 rows=1 width=1616) (actual time=0.017..0.018 rows=1 loops=1)`
+  Index Cond: `(usuario_id = 1)`
+Planning Time: `0.411 ms`
+Execution Time: `0.084 ms`
+
 # 2. Correo Único de Usuarios - Más rersultado de tiempos
 Tabla: `usuarios`
 Columna: `correo`
@@ -20,11 +37,10 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX usuarios_correo_key ON public.usuarios USING btree (correo);
 ```
-Seq Scan on usuarios  `(cost=0.00..10.50 rows=1 width=1616) (actual time=0.097..0.098 rows=1 loops=1)`
-  Filter: ((correo)::text = 'admin@admin.com'::text)
-  Rows Removed by Filter: 5
-Planning Time: `0.433 ms`
-Execution Time: `0.163 ms`
+
+```sql
+EXPLAIN ANALYZE SELECT * FROM usuarios WHERE correo = 'admin@admin.com';
+```
 
 Index Scan using usuarios_correo_key on usuarios  `(cost=0.14..2.36 rows=1 width=1616) (actual time=0.035..0.035 rows=1 loops=1)`
   Index Cond: ((correo)::text = 'admin@admin.com'::text)
@@ -40,6 +56,15 @@ Código SQL:
 CREATE UNIQUE INDEX usuarios_username_key ON public.usuarios USING btree (username);
 ```
 
+```sql
+EXPLAIN ANALYZE SELECT * FROM usuarios WHERE username = 'ADMIN';
+```
+
+Index Scan using usuarios_username_key on usuarios  `(cost=0.14..2.36 rows=1 width=1616) (actual time=0.058..0.059 rows=1 loops=1)`
+  Index Cond: `((username)::text = 'ADMIN'::text)`
+Planning Time: `0.518 ms`
+Execution Time: `0.131 ms`
+
 # 4. Clave Primaria de Jugadores
 Tabla: `jugadores`
 Columna: `jugador_id`
@@ -48,6 +73,15 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX jugadores_pkey ON public.jugadores USING btree (jugador_id);
 ```
+
+```sql
+EXPLAIN ANALYZE SELECT * FROM jugadores WHERE jugador_id = 2;
+```
+
+Index Scan using jugadores_pkey on jugadores  `(cost=0.15..2.37 rows=1 width=250) (actual time=0.026..0.027 rows=1 loops=1)`
+  Index Cond: `(jugador_id = 2)`
+Planning Time: `0.420 ms`
+Execution Time: `0.088 ms`
 
 # 5. Relación de Sesión Única por Partida
 Tabla: `jugadores`
@@ -58,6 +92,15 @@ Código SQL:
 CREATE UNIQUE INDEX unica_relacion_sesion ON public.jugadores USING btree (usuario_id, partida_id);
 ```
 
+```sql
+EXPLAIN ANALYZE SELECT * FROM jugadores WHERE usuario_id = 1 AND partida_id = 2;;
+```
+
+Index Scan using unica_relacion_sesion on jugadores  `(cost=0.15..2.37 rows=1 width=250) (actual time=0.069..0.069 rows=1 loops=1)`
+  Index Cond: `((usuario_id = 1) AND (partida_id = 2))`
+Planning Time: `0.424 ms`
+Execution Time: `0.137 ms`
+
 # 6. Clave Primaria de Partidas
 Tabla: `partidas`
 Columna: `partida_id`
@@ -66,6 +109,16 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX partidas_pkey ON public.partidas USING btree (partida_id);
 ```
+
+```sql
+EXPLAIN ANALYZE SELECT * FROM partidas WHERE partida_id = 1;
+```
+
+Index Scan using partidas_pkey on partidas  `(cost=0.15..2.37 rows=1 width=255) (actual time=0.023..0.023 rows=1 loops=1)`
+  Index Cond: `(partida_id = 1)`
+Planning Time: `0.447 ms`
+Execution Time: `0.090 ms`
+
 
 # 7. Comandante Único de Partida
 Tabla: `partidas`
@@ -76,6 +129,15 @@ Código SQL:
 CREATE UNIQUE INDEX partidas_commander_id_key ON public.partidas USING btree (commander_id);
 ```
 
+```sql
+EXPLAIN ANALYZE SELECT * FROM partidas WHERE commander_id = 'SECURE-NODE-440';
+```
+
+Index Scan using partidas_commander_id_key on partidas  `(cost=0.15..2.37 rows=1 width=255) (actual time=0.089..0.090 rows=1 loops=1)`
+  Index Cond: `((commander_id)::text = 'SECURE-NODE-440'::text)`
+Planning Time: `0.322 ms`
+Execution Time: `0.174 ms`
+
 # 8. Clave Primaria de Tropas
 Tabla: `tropas`
 Columna: `tropa_id`
@@ -84,6 +146,15 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX tropas_pkey ON public.tropas USING btree (tropa_id);
 ```
+
+```sql
+EXPLAIN ANALYZE SELECT * FROM tropas WHERE tropa_id = 1;
+```
+
+Index Scan using tropas_pkey on tropas  `(cost=0.15..2.37 rows=1 width=138) (actual time=0.079..0.079 rows=1 loops=1)`
+  Index Cond: `(tropa_id = 1)`
+Planning Time: `1.137 ms`
+Execution Time: `0.159 ms`
 
 # 9. Nombre Único de Tropa
 Tabla: `tropas`
@@ -94,6 +165,15 @@ Código SQL:
 CREATE UNIQUE INDEX tropas_nombre_tropa_key ON public.tropas USING btree (nombre_tropa);
 ```
 
+```sql
+EXPLAIN ANALYZE SELECT * FROM tropas WHERE nombre_tropa = 'Cibersoldado de Asalto';
+```
+
+Index Scan using tropas_nombre_tropa_key on tropas  `(cost=0.15..2.37 rows=1 width=138) (actual time=0.033..0.034 rows=1 loops=1)`
+  Index Cond: `((nombre_tropa)::text = 'Cibersoldado de Asalto'::text)`
+Planning Time: `0.417 ms`
+Execution Time: `0.138 ms`
+
 # 10. Clave Primaria de Infanterías
 Tabla: `infanterías`
 Columna: `tropa_id`
@@ -102,6 +182,15 @@ Código SQL:
 ```sql
 CREATE UNIQUE INDEX infanterias_pkey ON public.infanterias USING btree (tropa_id);
 ```
+
+```sql
+EXPLAIN ANALYZE SELECT * FROM infanterias WHERE tropa_id = 1;
+```
+
+Index Scan using infanterias_pkey on infanterias  `(cost=0.15..2.37 rows=1 width=16) (actual time=0.057..0.058 rows=1 loops=1)`
+  Index Cond: `(tropa_id = 1)`
+Planning Time: `0.343 ms`
+Execution Time: `0.127 ms`
 
 # 11. Clave Primaria de Caballerías
 Tabla: `caballerias`
