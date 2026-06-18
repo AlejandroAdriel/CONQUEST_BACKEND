@@ -61,9 +61,8 @@ CREATE TABLE
 CREATE TABLE
     continentes (
         continente_id SERIAL PRIMARY KEY,
-        mapa_id INT NOT NULL,
-        nro_paises INT NOT NULL,
-        FOREIGN KEY (mapa_id) REFERENCES mapas (mapa_id)
+        mapa_id INT NOT NULL REFERENCES mapas (mapa_id) ON DELETE CASCADE,
+        nombre_continente VARCHAR(100) NOT NULL
     );
 
 CREATE TABLE
