@@ -42,6 +42,15 @@ CREATE TABLE
     );
 
 CREATE TABLE
+    tiempos (
+        tiempo_id SERIAL PRIMARY KEY,
+        partida_id INT NOT NULL REFERENCES partidas (partida_id) ON DELETE CASCADE,
+        dias_campana INT DEFAULT 0 NOT NULL,
+        velocidad INT DEFAULT 1 NOT NULL,
+        pausado BOOLEAN DEFAULT FALSE NOT NULL
+    );
+
+CREATE TABLE
     mapas (
         mapa_id SERIAL PRIMARY KEY,
         nombre_mapa VARCHAR(100) NOT NULL,
