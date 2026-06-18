@@ -83,6 +83,18 @@ CREATE TABLE
     );
 
 CREATE TABLE
+    habilidades (
+        habilidad_id VARCHAR(50) PRIMARY KEY,
+        nombre VARCHAR(100) NOT NULL,
+        descripcion TEXT NOT NULL,
+        costo INT NOT NULL,
+        categoria VARCHAR(30) NOT NULL,
+        rama VARCHAR(50) NOT NULL, 
+        eje_x INT NOT NULL,
+        eje_y INT NOT NULL
+    );
+
+CREATE TABLE
     arbol_habilidades (
         arbol_id SERIAL PRIMARY KEY,
         tipo INT NOT NULL,
