@@ -12,3 +12,7 @@ ADD COLUMN tropas_artilleria INT DEFAULT 500 NOT NULL,
 ADD CONSTRAINT jugadores_usuario_id_fkey FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id) ON DELETE CASCADE,
 ADD CONSTRAINT jugadores_partida_id_fkey FOREIGN KEY (partida_id) REFERENCES partidas (partida_id) ON DELETE CASCADE,
 ADD CONSTRAINT unica_relacion_sesion UNIQUE (usuario_id, partida_id);
+
+-- 2026-06-18: Se corrigio el tipo de dato de la columna oro para evitar overflow
+ALTER TABLE jugadores
+ALTER COLUMN oro TYPE numeric;
