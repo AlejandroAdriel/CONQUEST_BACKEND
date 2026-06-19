@@ -33,7 +33,7 @@ CREATE TABLE
         usuario_id INT NOT NULL REFERENCES usuarios (usuario_id) ON DELETE CASCADE,
         partida_id INT NOT NULL REFERENCES partidas (partida_id) ON DELETE CASCADE,
         hq_pais_id VARCHAR(100) NOT NULL,
-        oro INT NOT NULL,
+        oro NUMERIC NOT NULL,
         habilidad_puntos INT DEFAULT 0 NOT NULL,
         tropas_infanteria INT DEFAULT 5000 NOT NULL,
         tropas_caballeria INT DEFAULT 2000 NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE
         descripcion TEXT NOT NULL,
         costo INT NOT NULL,
         categoria VARCHAR(30) NOT NULL,
-        rama VARCHAR(50) NOT NULL, 
+        rama VARCHAR(50) NOT NULL,
         eje_x INT NOT NULL,
         eje_y INT NOT NULL
     );
@@ -111,25 +111,28 @@ CREATE TABLE
             PRIMARY KEY (partida_id, habilidad_id)
     );
 
-CREATE TABLE tropas (
-    tropa_id SERIAL PRIMARY KEY,
-    nombre_tropa VARCHAR(50) NOT NULL UNIQUE,
-    costo_base INT NOT NULL CHECK (costo_base > 0),
-    multiplicador_combate NUMERIC(3,1) NOT NULL CHECK (multiplicador_combate >= 0.0)
-);
+CREATE TABLE
+    tropas (
+        tropa_id SERIAL PRIMARY KEY,
+        nombre_tropa VARCHAR(50) NOT NULL UNIQUE,
+        costo_base INT NOT NULL CHECK (costo_base > 0),
+        multiplicador_combate NUMERIC(3, 1) NOT NULL CHECK (multiplicador_combate >= 0.0)
+    );
 
-CREATE TABLE infanterias (
-    tropa_id INT PRIMARY KEY REFERENCES tropas(tropa_id) ON DELETE CASCADE,
-    bono_defensa_trinchera NUMERIC(3,1) DEFAULT 0.0 NOT NULL CHECK (bono_defensa_trinchera >= 0.0)
-);
+CREATE TABLE
+    infanterias (
+        tropa_id INT PRIMARY KEY REFERENCES tropas (tropa_id) ON DELETE CASCADE,
+        bono_defensa_trinchera NUMERIC(3, 1) DEFAULT 0.0 NOT NULL CHECK (bono_defensa_trinchera >= 0.0)
+    );
 
-CREATE TABLE caballerias (
-    tropa_id INT PRIMARY KEY REFERENCES tropas(tropa_id) ON DELETE CASCADE,
-    bono_ataque_flanqueo NUMERIC(3,1) DEFAULT 0.0 NOT NULL CHECK (bono_ataque_flanqueo >= 0.0)
-);
+CREATE TABLE
+    caballerias (
+        tropa_id INT PRIMARY KEY REFERENCES tropas (tropa_id) ON DELETE CASCADE,
+        bono_ataque_flanqueo NUMERIC(3, 1) DEFAULT 0.0 NOT NULL CHECK (bono_ataque_flanqueo >= 0.0)
+    );
 
-CREATE TABLE 
+CREATE TABLE
     artillerias (
-    tropa_id INT PRIMARY KEY REFERENCES tropas(tropa_id) ON DELETE CASCADE,
-    bono_perforacion_plasma NUMERIC(3,1) DEFAULT 0.0 NOT NULL CHECK (bono_perforacion_plasma >= 0.0)
-);
+        tropa_id INT PRIMARY KEY REFERENCES tropas (tropa_id) ON DELETE CASCADE,
+        bono_perforacion_plasma NUMERIC(3, 1) DEFAULT 0.0 NOT NULL CHECK (bono_perforacion_plasma >= 0.0)
+    );
