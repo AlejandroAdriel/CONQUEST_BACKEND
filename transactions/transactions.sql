@@ -55,6 +55,8 @@ CREATE OR REPLACE FUNCTION comprar_habilidad(
     p_jugador_id    INT,
     p_partida_id    INT,
     p_habilidad_id  VARCHAR(50),
+    p_costo_oro     INT
+
 )
 RETURNS JSONB
 LANGUAGE plpgsql
