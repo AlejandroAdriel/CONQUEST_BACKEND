@@ -217,3 +217,113 @@ Respuesta:
   }
 ]
 ```
+
+# 5. Reporte Ranking Fuerza de Combate (Vista)
+
+Método: `GET`
+Endpoint: `https://ivwglvdocjgwinzrqooc.supabase.co/rest/v1/reporte_ranking_fuerza_combate`
+
+Codigo:
+```sql
+CREATE OR REPLACE VIEW reporte_ranking_fuerza_combate AS
+SELECT 
+    u.username AS comandante,
+    p.partida_id,
+    pb.nombre_es AS pais_seleccionado,
+    SUM(j.oro) AS total_oro,
+    ROUND(
+        (SUM(j.tropas_infanteria) * 1.16) + 
+        (SUM(j.tropas_caballeria) * 1.64) + 
+        (SUM(j.tropas_artilleria) * 3.54)
+    ) AS fuerza_total_combate
+FROM 
+    jugadores j
+JOIN 
+    usuarios u ON j.usuario_id = u.usuario_id
+JOIN 
+    partidas p ON j.partida_id = p.partida_id
+JOIN 
+    paises_base pb ON j.hq_pais_id = pb.pais_id
+GROUP BY 
+    u.username, p.partida_id, pb.nombre_es
+HAVING 
+    SUM(j.tropas_infanteria + j.tropas_caballeria + j.tropas_artilleria) > 0
+ORDER BY 
+    fuerza_total_combate DESC;
+```
+
+Respuesta:
+```JSON
+[
+  {
+    "comandante": "DDD",
+    "partida_id": 19,
+    "pais_seleccionado": "Argentina",
+    "total_oro": 80000000,
+    "fuerza_total_combate": 314800000
+  },
+  {
+    "comandante": "ADMIN",
+    "partida_id": 5,
+    "pais_seleccionado": "Albania",
+    "total_oro": 0,
+    "fuerza_total_combate": 20894
+  },
+  {
+    "comandante": "DDD",
+    "partida_id": 22,
+    "pais_seleccionado": "Alemania",
+    "total_oro": 20000,
+    "fuerza_total_combate": 13072
+  },
+  {
+    "comandante": "TESTOP",
+    "partida_id": 2,
+    "pais_seleccionado": "Albania",
+    "total_oro": 6500,
+    "fuerza_total_combate": 12651
+  },
+  {
+    "comandante": "ADMIN",
+    "partida_id": 4,
+    "pais_seleccionado": "Albania",
+    "total_oro": 0,
+    "fuerza_total_combate": 5701
+  },
+  {
+    "comandante": "BLOPABLITO",
+    "partida_id": 8,
+    "pais_seleccionado": "Perú",
+    "total_oro": 308,
+    "fuerza_total_combate": 5464
+  },
+  {
+    "comandante": "CONQUEST>GTAVI",
+    "partida_id": 6,
+    "pais_seleccionado": "Albania",
+    "total_oro": 5000,
+    "fuerza_total_combate": 4654
+  },
+  {
+    "comandante": "ADMIN",
+    "partida_id": 9,
+    "pais_seleccionado": "Perú",
+    "total_oro": 30473,
+    "fuerza_total_combate": 1459
+  },
+  {
+    "comandante": "DDD",
+    "partida_id": 21,
+    "pais_seleccionado": "Perú",
+    "total_oro": 8000000,
+    "fuerza_total_combate": 63
+  },
+  {
+    "comandante": "DDD",
+    "partida_id": 23,
+    "pais_seleccionado": "Perú",
+    "total_oro": 8000000,
+    "fuerza_total_combate": 63
+  }
+]
+```
